@@ -8,7 +8,13 @@ String extension = ".mp3";
 void setup() {
   //size() or fullscreen()
   //Display Algorithm
-  minim = new Minim(this); 
+  minim = new Minim(this);
+  String
+  String
+  String
+  String
+  String
+  //
 } // end setup
 // 
 void draw() {
@@ -16,6 +22,8 @@ void draw() {
 } // end draw
 //
 void keyPressed() {
+  if ( key==' ' || key==' '  ) song1.play();
+   
   song1.loop(1)
 } //end keyPressed
 //
