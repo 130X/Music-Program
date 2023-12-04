@@ -1,3 +1,6 @@
+//Library: use Sketch / Import Libaray / minim 
+////
+
 //Global variables
 Minim minim; 
 String pathway = "../FreeWare Music/Music Download/";
@@ -23,8 +26,14 @@ void draw() {
 //
 void keyPressed() {
   if ( key==' ' || key==' '  ) song1.play();
-   
-  song1.loop(1)
+  //
+  println(key);
+  if ( key== '1' || key=='9'  ) { 
+  String keystr = String.valueOf(key);
+  println(keystr);
+  int loopNum = int(keystr);
+  song1.loop(loopNum);
+  }
 } //end keyPressed
 //
 void mousePressed() {
