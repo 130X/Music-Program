@@ -21,7 +21,10 @@ void setup() {
 } // end setup
 // 
 void draw() {
-  // 
+  if ( song1.islooping() && song1.loopCount()=-1 ) println("there are", song1.loopCount(), "loops left");
+  if ( song1.islooping() && song1.loopCount()==-1 ) println("Looping Infinitely"); 
+  if ( song1.isPlaying() && !song!.loopCount()==1 ) println("Playing Once"); 
+
 } // end draw
 //
 void keyPressed() {
@@ -34,6 +37,7 @@ void keyPressed() {
   int loopNum = int(keystr);
   song1.loop(loopNum);
   }
+  if() if ( key=='L' || key =='l' ) song1.loop();
 } //end keyPressed
 //
 void mousePressed() {
