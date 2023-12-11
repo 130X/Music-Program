@@ -2,17 +2,19 @@
 
 
 //Global variables
-Minim  minim;
-audio
-String pathway = "../FreeWare Music/Music Download/";
-String groove = "groove.mp3";
-String extension = ".mp3";
- song1 = minim.loadFile( pathway + groove ); 
-//
+Minim  minim;// 
+audioPlayer song1; //
+AudioMetaData SongMetaData1; //
+
 void setup() {
   //size() or fullscreen()
   //Display Algorithm //<>//
   minim = new Minim(this);
+  String pathway = "../FreeWare Music/Music Download/";
+String groove = "groove.mp3";
+String extension = ".mp3";
+ song1 = minim.loadFile( pathway + groove ); 
+//
   String
   String
   String
