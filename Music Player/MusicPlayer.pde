@@ -13,13 +13,20 @@ void setup() {
   String pathway = "../FreeWare Music/Music Download/";
 String groove = "groove.mp3";
 String extension = ".mp3";
- song1 = minim.loadFile( pathway + groove ); 
+String 
+String
+ song1 = minim.loadFile( pathway + groove );
 //
-  String
-  String
-  String
-  String
-  String
+print(path);
+song1 = minim.loadfile( path );
+ songMetaData1 = song1.getMetaData();
+  //song1.loop(0);
+  //
+  //Meta Data Println Testing 18 lines 
+  println("?", songMetaData1.?() );
+  println("file name", songMetaData1.fileName() );
+
+ 
   //
 } // end setup
 // 
@@ -28,7 +35,7 @@ void draw() {
   if ( song1.islooping() && song1.loopCount()==-1 ) println("Looping Infinitely"); 
   if ( song1.isPlaying() && !song!.loopCount()==1 ) println("Playing Once"); 
   //
-  println( ' Sogn 
+ //Println();
 } // end draw
 //
 void keyPressed() {
