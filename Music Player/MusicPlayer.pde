@@ -23,9 +23,24 @@ song1 = minim.loadfile( path );
   //song1.loop(0);
   //
   //Meta Data Println Testing 18 lines 
-  println("?", songMetaData1.?() );
-  println("file name", songMetaData1.fileName() );
-
+  println("Song Length (in milliseconds)", songMetaData1.length() );
+  println("Song Length (in seconds)", songMetaData1.length()/1000 );
+  println("Song Length (in minutes & seconds)", songMetaData1.?()/1000/60, "minutes", songMetaData1.length()/1000 - ( songMetaData1.length()/1000  ( songMetaData1.?()/1000/60)*60),  );// gets formula 
+  println("Song Title", songMetaData1.title() ); 
+  println("Author", songMetaData1.author() );
+  println("Composers", songMetaData1.composer() );
+  println("Orchestra", songMetaData1.orchestra() ); 
+  println("Album", songMetaData1.album() );
+  println("Disk", songMetaData1.disc() );
+  println("Publisher", songMetaData1.publisher) );
+  println("Date Released", songMetaData1.date() );
+  println("Copyright", songMetaData1.copyright() );
+  println("Comments", songMetaData1.comment() );
+  println("Lyrics", songMetaData1.lyrics() ); //Optional:
+  println("Track", songMetaData1.track() );
+  println("Genre", songMetaData1.genre() );
+  println("Endcoded", songMetaData1.endcoded() );
+// must use pure java 
  
   //
 } // end setup
