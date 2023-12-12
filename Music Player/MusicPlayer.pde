@@ -22,6 +22,8 @@ String
 print(path);
 song1 = minim.loadfile( path );
  songMetaData1 = song1.getMetaData();
+ //Title 
+ generalFont = createFont ("chiller", 55); 
   //song1.loop(0);
   //
   //Meta Data Println Testing 18 lines 
@@ -53,6 +55,15 @@ void draw() {
   if ( song1.isPlaying() && !song!.loopCount()==1 ) println("Playing Once"); 
   //
  //Println();
+ // songMetaData1.title()
+ rect(width*1/4, height*0, wdith*1/2, height*1/10);
+ fill(purple);
+ textAlign (titileFOnt, 30);
+ int size = 30; 
+ textFont(generalFont, size); 
+ textFont(titlefont, 30);
+ text(songMetaData.title(), width*1/4, height*0, width*1/2, height*1/10 );
+ fill(255);
 } // end draw
 //
 void keyPressed() {
