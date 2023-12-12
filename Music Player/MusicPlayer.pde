@@ -5,7 +5,9 @@
 Minim  minim;// 
 audioPlayer song1; //
 AudioMetaData SongMetaData1; //
-
+PFont GeneralFont;
+color purple = #2C08FF;
+//
 void setup() {
   //size() or fullscreen()
   //Display Algorithm //<>//
