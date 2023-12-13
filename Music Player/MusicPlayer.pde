@@ -1,7 +1,7 @@
 //Global variables
 Minim  minim; 
 int numberOfSongs = 2; // the number of files in   the Folder
-int numberOfSoundEffects = 0; // the number of files in   the Folder
+int numberOfSoundEffects = 3; // the number of files in   the Folder
 AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]); //
 AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; //Sound effects
 AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings]; //
