@@ -1,5 +1,6 @@
 //Global variables
-//
+// you need to feel it
+
 Minim  minim; 
 int numberOfSongs = 2; // the number of files in   the Folder
 int numberOfSoundEffects = 3; // the number of files in   the Folder
