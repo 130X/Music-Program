@@ -8,11 +8,11 @@ import ddf.minim.ugens.*;
 //
 
 //Global variables
-Minim  minim; 
-int numberOfSongs = 1; // the number of files in   the Folder
-int numberOfSoundEffects = 3; // the number of files in   the Folder
+Minim  minim;
+int numberOfSongs = 2; 
+int numberOfSoundEffects = 3; 
 AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; // //<>//
-AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; //Sound effects
+AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; 
 AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ];
 PFont generalFont;
 color tropical = #30D15C;
