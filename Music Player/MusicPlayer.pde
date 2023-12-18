@@ -1,5 +1,5 @@
 //Music Player //Multi-soundcode
-import java.io*;
+import java.io.*;
 //
 import ddf.minim.*; 
 import ddf.minim.analysis.*;
