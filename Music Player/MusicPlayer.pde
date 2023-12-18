@@ -12,7 +12,7 @@ int numberOfSongs = 1; // the number of files in   the Folder
 int numberOfSoundEffects = 3; // the number of files in   the Folder
 AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; //Sound effects
-AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ]; //
+AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ]; 
 PFont generalFont;
 color tropical = #30D15C;
 //
@@ -59,7 +59,7 @@ void draw() {
   //Println();
   //songMetaData[0].title()
   rect(width*1/4, height*0, width*1/2, height*1/10);
-  fill(purple);
+  fill(tropical);
   textAlign (CENTER, CENTER);
   //
   int size = 10; 
