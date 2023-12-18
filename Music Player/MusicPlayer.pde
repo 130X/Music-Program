@@ -1,34 +1,39 @@
+//Library: use Sketch / Import Library / Minim
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+//
 //Global variables
-// you need to feel it
+//you need to feel it
 
 Minim  minim; 
 int numberOfSongs = 2; // the number of files in   the Folder
 int numberOfSoundEffects = 3; // the number of files in   the Folder
-AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]); //
+AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; //Sound effects
-AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings]; //
-PFont GeneralFont;
-color purple = #2C08FF;
+AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ]; //
+PFont generalFont;
+color tropical = #30D15C;
 //
 void setup() {
   //size() or fullscreen()
   //Display Algorithm //<>//
   minim = new Minim(this);
-  String pathway = "../FreeWare Music/Music Download/";
   String groove = "groove.mp3";
   String extension = ".mp3";
-  String 
-  String
- song[0] = minim.loadFile( pathway + groove );
-//
-  print(path);
-  song[0] = minim.loadfile( path );
- songMetaData[0] = song[0].getMetaData();
- //Title 
- generalFont = createFont ("chiller", 55); 
-  //song[0].loop(0);
+  String pathway = "FreeWare Music/MusicDownload/";
+  String path = sketchPath( pathway + groove);
   //
-  //Meta Data Println Testing 18 lines 
+  print(path);
+  song[0] = minim.loadFile( path );
+  songMetaData[0] = song[0].getMetaData(); 
+  generalFont = createFont ("Algerian", 55); 
+  //
+  println("File Name", songMetaData[0].fileName() );
+  //18 lines 
   println("Song Length (in milliseconds)", songMetaData[0].length() );
   println("Song Length (in seconds)", songMetaData[0].length()/1000 );
   println("Song Length (in minutes & seconds)", songMetaData[0].?()/1000/60, "minutes", songMetaData[0].length()/1000 - ( songMetaData[0].length()/1000  ( songMetaData[0].?()/1000/60)*60),  );// gets formula 
@@ -46,9 +51,6 @@ void setup() {
   println("Track", songMetaData[0].track() );
   println("Genre", songMetaData[0].genre() );
   println("Endcoded", songMetaData[0].endcoded() );
-  // must use pure java 
- 
-  //
 } // end setup
 // 
 void draw() {
@@ -57,15 +59,15 @@ void draw() {
   if ( song[0].isPlaying() && !song!.loopCount()==1 ) println("Playing Once"); 
   //
   //Println();
-  // songMetaData[0].title()
-  rect(width*1/4, height*0, wdith*1/2, height*1/10);
+  //songMetaData[0].title()
+  rect(width*1/4, height*0, width*1/2, height*1/10);
   fill(purple);
-  textAlign (titileFOnt, 30);
-  int size = 30; 
+  textAlign (CENTER, CENTER);
+  //
+  int size = 10; 
   textFont(generalFont, size); 
-  textFont(titlefont, 30);
-  text(songMetaData[0].title(), width*1/4, height*0, width*1/2, height*1/10 );
-  fill(255);
+  text(songMetaData[0].title(), width*1/4, height*0, width*1/2, height*3/10 );
+  fill(255); 
 } // end draw
 //
 void keyPressed() {
