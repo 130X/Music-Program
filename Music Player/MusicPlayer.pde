@@ -1,4 +1,5 @@
-import ddf.minim.*; //<>//
+//Music Player //Multi-soundcode
+import ddf.minim.*; 
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
@@ -10,9 +11,9 @@ import ddf.minim.ugens.*;
 Minim  minim; 
 int numberOfSongs = 1; // the number of files in   the Folder
 int numberOfSoundEffects = 3; // the number of files in   the Folder
-AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; //
+AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; // //<>//
 AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; //Sound effects
-AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ]; 
+AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ];
 PFont generalFont;
 color tropical = #30D15C;
 //
