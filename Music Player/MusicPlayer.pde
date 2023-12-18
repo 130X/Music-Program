@@ -1,5 +1,4 @@
 //Music Player //Multi-soundcode
-
 import java.io*;
 //
 import ddf.minim.*; 
@@ -11,8 +10,8 @@ import ddf.minim.ugens.*;
 //
 
 //Global variables
-Minim  minim; //<>//
-int numberOfSongs = 2; 
+Minim  minim;
+int numberOfSongs = 2;  //<>//
 int numberOfSoundEffects = 3; 
 AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; 
