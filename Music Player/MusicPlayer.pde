@@ -1,16 +1,14 @@
-//Library: use Sketch / Import Library / Minim
-import ddf.minim.*;
+import ddf.minim.*; //<>//
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
-//Global variables
-//you need to feel it
 
+//Global variables
 Minim  minim; 
-int numberOfSongs = 2; // the number of files in   the Folder
+int numberOfSongs = 1; // the number of files in   the Folder
 int numberOfSoundEffects = 3; // the number of files in   the Folder
 AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; //Sound effects
@@ -20,7 +18,7 @@ color tropical = #30D15C;
 //
 void setup() {
   //size() or fullscreen()
-  //Display Algorithm //<>//
+  //Display Algorithm
   minim = new Minim(this);
   String groove = "groove.mp3";
   String extension = ".mp3";
@@ -36,14 +34,14 @@ void setup() {
   //18 lines 
   println("Song Length (in milliseconds)", songMetaData[0].length() );
   println("Song Length (in seconds)", songMetaData[0].length()/1000 );
-  println("Song Length (in minutes & seconds)", songMetaData[0].?()/1000/60, "minutes", songMetaData[0].length()/1000 - ( songMetaData[0].length()/1000  ( songMetaData[0].?()/1000/60)*60),  );// gets formula 
+  println("Song Length (in minutes & seconds)", songMetaData1.length()/1000/60, "minutes", ( songMetaData1.length()/1000 - ( songMetaData1.length()/1000/60)*60 ), "seconds" );
   println("Song Title", songMetaData[0].title() ); 
   println("Author", songMetaData[0].author() );
   println("Composers", songMetaData[0].composer() );
   println("Orchestra", songMetaData[0].orchestra() ); 
   println("Album", songMetaData[0].album() );
   println("Disk", songMetaData[0].disc() );
-  println("Publisher", songMetaData[0].publisher) );
+  println("Publisher", songMetaData[0].publisher() );
   println("Date Released", songMetaData[0].date() );
   println("Copyright", songMetaData[0].copyright() );
   println("Comments", songMetaData[0].comment() );
@@ -56,7 +54,7 @@ void setup() {
 void draw() {
   if ( song[0].islooping() && song[0].loopCount()=-1 ) println("there are", song[0].loopCount(), "loops left");
   if ( song[0].islooping() && song[0].loopCount()==-1 ) println("Looping Infinitely"); 
-  if ( song[0].isPlaying() && !song!.loopCount()==1 ) println("Playing Once"); 
+  if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
   //
   //Println();
   //songMetaData[0].title()
@@ -80,19 +78,35 @@ void keyPressed() {
   int loopNum = int(keystr); //Java, strongly formatted
   song[0].loop(loopNum);
   }
-  if() if ( key=='L' || key =='l' ) song[0].loop(); //Loop
-  if() if ( key=='M' || key =='m' ) { //Mute
-    if ( .isMute() ) { 
-      song[0].unmute();
-    } else { 
-      //might rewind the song 
-      .mute();
+    if ( key=='L' || key=='l' ) song1.loop(); //Infinite Loop, no parameter OR -1
+  //
+  if ( key=='M' || key=='m' ) { //Mute Button
+    if ( song1.isMuted() ) {
+      song1.unmute();
+    } else {
+      
+      song1.mute();
     }
-  } //mute end 
+  } //End MUTE
   // skip forward 
-  if ( key=='F' || key =='f' ) .skip();
-  if () .skip(); 
-
+  if ( key=='F' || key =='f' ) song1.skip( 0 );
+  if (key=='R' || key =='r' ) song1.skip( 1000 ); 
+  //
+  if ( key=='S' | key=='s' ) {
+    if ( song1.isPlaying() ) {
+      song1.pause();
+    } else {  
+      song1.rewind();
+    }
+  }
+  //Pause
+  if ( key=='Y' | key=='y' ) {
+    if ( song1.isplaying()==true ) { 
+      song1.pause();
+    } else { 
+      song1play();
+    }
+  }
 } //end keyPressed
 //
 void mousePressed() {
