@@ -17,19 +17,31 @@ AudioPlayer[] playListMetaData = new AudioPlayer[ numberOfSoundEffects ];
 AudioMetaData[] SoundEffects = new AudioMetaData[ numberOfSSondEffects];
 PFont generalFont;
 color tropical = #30D15C;
+PFont generalFont;
 //
 void setup() {
   //size() or fullscreen()
   //Display Algorithm
   String relativeMusicPathway = "Audio Library/SoundEffects/";//Relative pathay
   String absolutSoundPath = sketchPath( relativeSoundPathway); // 
-    SoundEffectFolder = new File(absolute
-  String path = sketchPath
+    SoundEffectFolder = new File(absoluteSoundPath);
+  int SoundEffectCount = SoundEffectFoler.list().length
+  File[] soundEffectFiles = SoundEffectFolder.listfiles();
+  String[] songFilePathway = new Striing[soundEffectFileCount];
+  for ( int i = 0; i < SoundEffectFiles.length; i++) { 
+    soundEffectFIlePathway[i] = ( soundEffectFiles[i].toString() );
+  }
+  //
+  numberofSoundEffects = soundEffectsFileCount;
+  soundEffects = newAudioPlayer[numberOfsoundEffects];
+  for ( inti=0; i<SoundEffectsFileCount; i++ ); 
+  } //end SoundEffect load
   //
   print(path);
   song[0] = minim.loadFile( path );
   songMetaData[0] = song[0].getMetaData(); 
-  generalFont = createFont ("Algerian", 55); 
+  generalFont = createFont ("Algerian", 55);
+  playList[0] 
   //
 } // end setup
 // 
