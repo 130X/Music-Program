@@ -1,5 +1,4 @@
-//Music Player //Multi-soundcodes
-import java.io.*; //How to import java?
+import java.io.*; //Music Player //Multi-soundcodes //How to import java?
 //
 import ddf.minim.*; 
 import ddf.minim.analysis.*;
@@ -9,11 +8,11 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global variables
-File songsFolder, SoundEffectsFolder;
+File musicFolder, SoundEffectsFolder;
 Minim minim;
 int numberOfSongs = 1,  numberOfSoundEffects = 2;  //<>//
 AudioPlayer[] playlist = new AudioPlayer[numberOfSongs]; //
-AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs}; 
+AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs]; 
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
 color tropical = #30D15C;
 PFont generalFont;
@@ -21,27 +20,45 @@ PFont generalFont;
 void setup() {
   //size() or fullscreen()
   //Display Algorithm
-  String relativeMusicPathway = "Audio Library/SoundEffects/";//Relative pathay
-  String absolutSoundPath = sketchPath( relativeSoundPathway); // 
-    SoundEffectFolder = new File(absoluteSoundPath);
-  int SoundEffectCount = SoundEffectFoler.list().length;
-  File[] soundEffectFiles = SoundEffectFolder.listfiles();
-  String[] songFilePathway = new Striing[soundEffectFileCount];
-  for ( int i = 0; i < SoundEffectFiles.length; i++) { 
-    soundEffectFIlePathway[i] = ( soundEffectFiles[i].toString() );
+//Music file load
+  String relativeMusicPathway = "Audio Library/songs/";
+  String absoluteMusicPath = sketchPath( relativeMusicPathway ); 
+    musicFolder = new File(absoluteMusicPath);
+  int musicFileCount = musicFolder.list().length;
+    File[] musicFiles = musicFolder.listFiles();
+  String[] songFilePathway = new String[musicFileCount];
+  for ( int i = 0; i < musicFiles.length; i++ ) {
+    songFilePathway[i] = ( musicFiles[i].toString() );
+  }
+  int numberOfSongs = musicFileCount; 
+  playList = new AudioPlayer[numberOfSongs]; 
+  playListMetaData = new AudioMetaData[numberOfSongs]; 
+  for ( int i=0; i<musicFileCount; i++ ) {
+    playList[i]= minim.loadFile( songFilePathway[i] );
+    playListMetaData[i] = playList[i].getMetaData();
+  } //End Music Load
+  //
+  //
+//Sound Effects load
+  String relativeSoundPathway = "Audio Library/SoundEffects/";//Relative pathay
+  String absoluteSoundPath = sketchPath( relativeSoundPathway); // 
+    SoundEffectsFolder = new File(absoluteSoundPath);
+  int SoundEffectsCount = SoundEffectsFoler.list().length;
+  File[] SoundEffectsFiles = SoundEffectsFolder.listfiles();
+  String[] SoundEffectsFilePathway = new String[SoundEffectsFileCount];
+  for ( int i = 0; i < SoundEffectsFiles.length; i++) { 
+   SoundEffectFIlePathway[i] = ( SoundEffectsFiles[i].toString() );
   }
   //
-  numberofSoundEffects = soundEffectsFileCount;
-  soundEffects = newAudioPlayer[numberOfsoundEffects];
+  numberofSoundEffects = SoundEffectsFileCount;
+  SoundEffects = newAudioPlayer[numberOfSoundEffects];
   for ( inti=0; i<SoundEffectsFileCount; i++ ); 
   } //end SoundEffect load
   //
-  //print(path);
-  song[0] = minim.loadFile( path );
-  songMetaData[0] = song[0].getMetaData(); 
-  generalFont = createFont ("Algerian", 55);
-  playList[0] 
+  minim= new Minim(this);
   //
+  generalFont = createFont ("Algerian", 55);
+  playList[0].play();
 } // end setup
 // 
 void draw() {
