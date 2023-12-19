@@ -10,8 +10,8 @@ import ddf.minim.ugens.*;
 //
 
 //Global variables
-Minim  minim;
-int numberOfSongs = 1,  numberOfSoundEffects = 1;  //<>//
+File musicFolder, soundEffectFolder;
+int numberOfSongs = 2,  numberOfSoundEffects = 3;  //<>//
 AudioPlayer[] playlist = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] playListMetaData = new AudioPlayer[ numberOfSoundEffects ]; 
 AudioMetaData[] SoundEffects = new AudioMetaData[ numberOfSSondEffects];
@@ -21,36 +21,16 @@ color tropical = #30D15C;
 void setup() {
   //size() or fullscreen()
   //Display Algorithm
-  minim = new Minim(this);
-  String groove = "groove.mp3";
-  String extension = ".mp3";
-  String pathway = "FreeWare Music/MusicDownload/";
-  String path = sketchPath( pathway + groove);
+  String relativeMusicPathway = "Audio Library/SoundEffects/";//Relative pathay
+  String absolutSoundPath = sketchPath( relativeSoundPathway); // 
+    SoundEffectFolder = new File(absolute
+  String path = sketchPath
   //
   print(path);
   song[0] = minim.loadFile( path );
   songMetaData[0] = song[0].getMetaData(); 
   generalFont = createFont ("Algerian", 55); 
   //
-  println("File Name", songMetaData[0].fileName() );
-  //18 lines 
-  println("Song Length (in milliseconds)", songMetaData[0].length() );
-  println("Song Length (in seconds)", songMetaData[0].length()/1000 );
-  println("Song Length (in minutes & seconds)", songMetaData1.length()/1000/60, "minutes", ( songMetaData1.length()/1000 - ( songMetaData1.length()/1000/60)*60 ), "seconds" );
-  println("Song Title", songMetaData[0].title() ); 
-  println("Author", songMetaData[0].author() );
-  println("Composers", songMetaData[0].composer() );
-  println("Orchestra", songMetaData[0].orchestra() ); 
-  println("Album", songMetaData[0].album() );
-  println("Disk", songMetaData[0].disc() );
-  println("Publisher", songMetaData[0].publisher() );
-  println("Date Released", songMetaData[0].date() );
-  println("Copyright", songMetaData[0].copyright() );
-  println("Comments", songMetaData[0].comment() );
-  println("Lyrics", songMetaData[0].lyrics() ); //Optional:
-  println("Track", songMetaData[0].track() );
-  println("Genre", songMetaData[0].genre() );
-  println("Endcoded", songMetaData[0].endcoded() );
 } // end setup
 // 
 void draw() {
