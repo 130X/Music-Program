@@ -10,7 +10,8 @@ import ddf.minim.ugens.*;
 //
 //Global variables
 File songsFolder, SoundEffectsFolder;
-int numberOfSongs = 2,  numberOfSoundEffects = 3;  //<>//
+Minim minim;
+int numberOfSongs = 1,  numberOfSoundEffects = 2;  //<>//
 AudioPlayer[] playlist = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] playListMetaData = new AudioPlayer[ numberOfSoundEffects ]; 
 AudioMetaData[] SoundEffects = new AudioMetaData[ numberOfSSondEffects];
