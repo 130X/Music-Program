@@ -12,10 +12,9 @@ import ddf.minim.ugens.*;
 File songsFolder, SoundEffectsFolder;
 Minim minim;
 int numberOfSongs = 1,  numberOfSoundEffects = 2;  //<>//
-AudioPlayer[] playlist = new AudioPlayer[ numberOfSongs ]; //
-AudioPlayer[] playListMetaData = new AudioPlayer[ numberOfSoundEffects ]; 
-AudioMetaData[] SoundEffects = new AudioMetaData[ numberOfSSondEffects];
-PFont generalFont;
+AudioPlayer[] playlist = new AudioPlayer[numberOfSongs]; //
+AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs}; 
+AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
 color tropical = #30D15C;
 PFont generalFont;
 //
