@@ -79,45 +79,45 @@ void draw() {
 } // end draw
 //
 void keyPressed() {
-  soundEffects
-  /*if ( key==' ' || key==' '  ) song[0].play();
-  //
-  println(key);
+  SoundEffect[1].play();
+  //Play
+  if ( key==' ' || key==' '  ) playList[0].play();
+  //Stop/Pause
+  if ( key=='Y' | key=='y' ) {
+    if ( playList[0].isplaying()==true ) { 
+      playList[0].pause();
+    } else { 
+      playList[0]play();
+    }
+  }
+  //Loop
   if ( key>= '1' || key<='9'  ) { 
   String keystr = String.valueOf(key);
   //println(keystr);
   int loopNum = int(keystr); //Java, strongly formatted
-  song[0].loop(loopNum);
+  playList[0].loop(loopNum);
   }
-    if ( key=='L' || key=='l' ) song1.loop(); //Infinite Loop, no parameter OR -1
-  //
-  if ( key=='M' || key=='m' ) { //Mute Button
-    if ( song1.isMuted() ) {
-      song1.unmute();
+    if ( key=='L' || key=='l' ) playList[0].loop(); //Infinite Loop, no parameter OR -1
+  //Mute 
+  if ( key=='M' || key=='m' ) { 
+    if ( playList[0].isMuted() ) {
+      playList[0].unmute();
     } else {
       
-      song1.mute();
+      playList[0].mute();
     }
-  } //End MUTE
-  // skip forward 
-  if ( key=='F' || key =='f' ) song1.skip( 0 );
-  if (key=='R' || key =='r' ) song1.skip( 1000 ); 
+  } 
+  // Skip 
+  if ( key=='F' || key =='f' ) playList[0].skip( 0 );
+  if (key=='R' || key =='r' ) playList[0].skip( 1000 ); 
   //
   if ( key=='S' | key=='s' ) {
-    if ( song1.isPlaying() ) {
-      song1.pause();
+    if ( playList[0].isPlaying() ) {
+      playList[0].pause();
     } else {  
-      song1.rewind();
+      playList[0].rewind();
     }
   }
-  //Pause
-  if ( key=='Y' | key=='y' ) {
-    if ( song1.isplaying()==true ) { 
-      song1.pause();
-    } else { 
-      song1play();
-    }
-  } */
 } //end keyPressed
 //
 void mousePressed() {
