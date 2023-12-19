@@ -1,4 +1,4 @@
-//Music Player //Multi-soundcode
+//Music Player //Multi-soundcodes
 import java.io.*;
 //
 import ddf.minim.*; 
@@ -11,11 +11,10 @@ import ddf.minim.ugens.*;
 
 //Global variables
 Minim  minim;
-int numberOfSongs = 2;  //<>//
-int numberOfSoundEffects = 3; 
-AudioPlayer[] song = new AudioPlayer[ numberOfSongs ]; //
-AudioPlayer[] soundEffect = new AudioPlayer[ numberOfSoundEffects ]; 
-AudioMetaData[] songMetaData = new AudioMetaData[ numberOfStrings ];
+int numberOfSongs = 1,  numberOfSoundEffects = 1;  //<>//
+AudioPlayer[] playlist = new AudioPlayer[ numberOfSongs ]; //
+AudioPlayer[] playListMetaData = new AudioPlayer[ numberOfSoundEffects ]; 
+AudioMetaData[] SoundEffects = new AudioMetaData[ numberOfSSondEffects];
 PFont generalFont;
 color tropical = #30D15C;
 //
