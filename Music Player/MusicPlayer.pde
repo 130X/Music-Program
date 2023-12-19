@@ -8,9 +8,8 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
-
 //Global variables
-File musicFolder, soundEffectFolder;
+File musicFolder, SoundEffectsFolder;
 int numberOfSongs = 2,  numberOfSoundEffects = 3;  //<>//
 AudioPlayer[] playlist = new AudioPlayer[ numberOfSongs ]; //
 AudioPlayer[] playListMetaData = new AudioPlayer[ numberOfSoundEffects ]; 
@@ -25,7 +24,7 @@ void setup() {
   String relativeMusicPathway = "Audio Library/SoundEffects/";//Relative pathay
   String absolutSoundPath = sketchPath( relativeSoundPathway); // 
     SoundEffectFolder = new File(absoluteSoundPath);
-  int SoundEffectCount = SoundEffectFoler.list().length
+  int SoundEffectCount = SoundEffectFoler.list().length;
   File[] soundEffectFiles = SoundEffectFolder.listfiles();
   String[] songFilePathway = new Striing[soundEffectFileCount];
   for ( int i = 0; i < SoundEffectFiles.length; i++) { 
@@ -37,7 +36,7 @@ void setup() {
   for ( inti=0; i<SoundEffectsFileCount; i++ ); 
   } //end SoundEffect load
   //
-  print(path);
+  //print(path);
   song[0] = minim.loadFile( path );
   songMetaData[0] = song[0].getMetaData(); 
   generalFont = createFont ("Algerian", 55);
@@ -63,7 +62,8 @@ void draw() {
 } // end draw
 //
 void keyPressed() {
-  if ( key==' ' || key==' '  ) song[0].play();
+  SoundEffects[2].play
+  /*if ( key==' ' || key==' '  ) song[0].play();
   //
   println(key);
   if ( key>= '1' || key<='9'  ) { 
@@ -100,7 +100,7 @@ void keyPressed() {
     } else { 
       song1play();
     }
-  }
+  } */
 } //end keyPressed
 //
 void mousePressed() {
