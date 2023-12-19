@@ -52,7 +52,8 @@ void setup() {
   //
   numberofSoundEffects = SoundEffectsFileCount;
   SoundEffects = newAudioPlayer[numberOfSoundEffects];
-  for ( inti=0; i<SoundEffectsFileCount; i++ ); 
+  for ( inti=0; i<SoundEffectsFileCount; i++ ) {
+    SoundEffects[i]=minim.loadFile( SoundEffectsFilePathway[i] );
   } //end SoundEffect load
   //
   minim= new Minim(this);
@@ -62,11 +63,10 @@ void setup() {
 } // end setup
 // 
 void draw() {
-  if ( song[0].islooping() && song[0].loopCount()=-1 ) println("there are", song[0].loopCount(), "loops left");
-  if ( song[0].islooping() && song[0].loopCount()==-1 ) println("Looping Infinitely"); 
-  if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
+  if ( playList[0].islooping() && playList[0].loopCount()=-1 ) println("there are", playList[0].loopCount(), "loops left");
+  if ( playList[0].islooping() && playList[0].loopCount()==-1 ) println("Looping Infinitely"); 
+  if ( playList[0].isPlaying() && !playList[0].isLooping() ) println("Play Once");
   //
-  //Println();
   //songMetaData[0].title()
   rect(width*1/4, height*0, width*1/2, height*1/10);
   fill(tropical);
@@ -74,12 +74,12 @@ void draw() {
   //
   int size = 10; 
   textFont(generalFont, size); 
-  text(songMetaData[0].title(), width*1/4, height*0, width*1/2, height*3/10 );
+  text(playListMetaData[0].title(), width*1/4, height*0, width*1/2, height*3/10 );
   fill(255); 
 } // end draw
 //
 void keyPressed() {
-  SoundEffects[2].play
+  soundEffects
   /*if ( key==' ' || key==' '  ) song[0].play();
   //
   println(key);
