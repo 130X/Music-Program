@@ -80,6 +80,11 @@ void draw() {
 //
 void keyPressed() {
   SoundEffect[1].play();
+  if ( SoundEffects[1].isplaying() ) {
+    delay(3000); 
+    SoundEffects[2].rewind();
+  } else {
+  }
   //Play
   if ( key==' ' || key==' '  ) playList[0].play();
   //Stop/Pause
@@ -103,7 +108,6 @@ void keyPressed() {
     if ( playList[0].isMuted() ) {
       playList[0].unmute();
     } else {
-      
       playList[0].mute();
     }
   } 
