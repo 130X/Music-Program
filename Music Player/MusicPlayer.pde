@@ -1,3 +1,6 @@
+import ddf.minim.Minim;
+import ddf.minim.AudioMetaData;
+import ddf.minim.AudioPlayer;
 //Global variables
 File musicFolder, SoundEffectsFolder;
 Minim minim;
@@ -36,11 +39,11 @@ void setup() {
   String relativeSoundPathway = "Audio Library/SoundEffects/";//Relative pathay
   String absoluteSoundPath = sketchPath( relativeSoundPathway); // 
     SoundEffectsFolder = new File(absoluteSoundPath);
-  int SoundEffectsCount = SoundEffectsFoler.list().length;
+  int SoundEffectsCount = SoundEffectsFolder.list().length;
   File[] SoundEffectsFiles = SoundEffectsFolder.listfiles();
   String[] SoundEffectsFilePathway = new String[SoundEffectsFileCount];
   for ( int i = 0; i < SoundEffectsFiles.length; i++) { 
-   SoundEffectFIlePathway[i] = ( SoundEffectsFiles[i].toString() );
+   SoundEffectFilePathway[i] = ( SoundEffectsFiles[i].toString() );
   }
   //
   numberofSoundEffects = SoundEffectsFileCount;
@@ -76,6 +79,8 @@ void draw() {
   currentSong = int (random(0, numberOfSongs-1) ); //casting truncates(rounding) the decimal
   println("Random start", currentSong);
   // Autoplay, next song automatically plays
+  //ERROR; AutoPlay breaks STOP, there is never a song not playing
+  //ERRORL AutoPlay will break at the end of the play list
   if ( playList[curremtSong].isplaying() ) { 
   //empty if, TRUE 
   } else {
@@ -93,7 +98,7 @@ void keyPressed() {
   } else {
   }
   //Play
-  if ( key==' ' || key==' '  ) playList[cureentSong].play();
+  if ( key==' ' || key==' '  ) playList[currentSong].play();
   //Stop/Pause: ask if.playing() & .pause() & .rewind() & .rewind
   if ( key=='S' | key=='s' ) {
     if ( playList[currentSong].isplaying()==true ) { 
@@ -108,7 +113,17 @@ void keyPressed() {
   } //end Next
   //
   if ( key==CODED && keyCode== LEFT ) {
-  
+    if ( .isPlaying() ) {
+     .pause()
+     .rewind()
+     currentSong = currentSong -1; //currentsong--; 
+     .play();
+    } else {
+    
+    
+    } 
+    .pasue();
+    .rewind();
   } //End Previous
   
   //Loop broken keybinds 
