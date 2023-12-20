@@ -10,7 +10,7 @@ import ddf.minim.ugens.*;
 //Global variables
 File musicFolder, SoundEffectsFolder;
 Minim minim;
-int numberOfSongs = 1,  numberOfSoundEffects = 2;  //<>//
+int numberOfSongs = 1,  numberOfSoundEffects = 2, currentSong=0;  //<>//
 AudioPlayer[] playlist = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs]; 
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
@@ -59,69 +59,72 @@ void setup() {
   minim= new Minim(this);
   //
   generalFont = createFont ("Algerian", 55);
-  playList[0].play();
+  playList[currentSong].play();
 } // end setup
 // 
 void draw() {
-  if ( playList[0].islooping() && playList[0].loopCount()=-1 ) println("there are", playList[0].loopCount(), "loops left");
-  if ( playList[0].islooping() && playList[0].loopCount()==-1 ) println("Looping Infinitely"); 
-  if ( playList[0].isPlaying() && !playList[0].isLooping() ) println("Play Once");
+  if ( playList[currentSong].islooping() && playList[currentSong].loopCount()=-1 ) println("there are", playList[currentSong].loopCount(), "loops left");
+  if ( playList[currentSong].islooping() && playList[currentSong].loopCount()==-1 ) println("Looping Infinitely"); 
+  if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
-  //songMetaData[0].title()
+  //songMetaData[currentsong].title()
   rect(width*1/4, height*0, width*1/2, height*1/10);
   fill(tropical);
   textAlign (CENTER, CENTER);
   //
   int size = 10; 
   textFont(generalFont, size); 
-  text(playListMetaData[0].title(), width*1/4, height*0, width*1/2, height*3/10 );
+  text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
   fill(255); 
+  // Autoplay, next song automatically plays
+  if () {} else {}
 } // end draw
 //
 void keyPressed() {
   SoundEffects[2].play();
   if ( SoundEffects[2].position() ) {
     SoundEffects[2].rewind();
-  //
   } else {
   }
   //Play
-  if ( key==' ' || key==' '  ) playList[0].play();
+  if ( key==' ' || key==' '  ) playList[cureentSong].play();
   //Stop/Pause
-  if ( key=='v' | key=='v' ) {
-    if ( playList[0].isplaying()==true ) { 
-      playList[0].pause();
-    } else { 
-      playList[0]play();
+  if ( key=='' | key=='v' ) {
+    if ( playList[currentSong].isplaying()==true ) { 
+      playList[currentSong].pause();
+    } else {
+      playList[currentSong]play();
     }
   }
-  //Loop
+  //Loop broken keybinds 
+  /*
   if ( key>= '1' || key<='9'  ) { 
   String keystr = String.valueOf(key);
   //println(keystr);
   int loopNum = int(keystr); //Java, strongly formatted
-  playList[0].loop(loopNum);
+  playList[currentSong].loop(loopNum);
   }
-    if ( key=='L' || key=='l' ) playList[0].loop(); //Infinite Loop, no parameter OR -1
+    if ( key=='L' || key=='l' ) playList[currentSong].loop(); //Infinite Loop, no parameter OR -1
   //Mute 
   if ( key=='M' || key=='m' ) { 
-    if ( playList[0].isMuted() ) {
-      playList[0].unmute();
+    if ( playList[currentSong].isMuted() ) {
+      playList[currentSong].unmute();
     } else {
-      playList[0].mute();
+      playList[currentSong].mute();
     }
   } 
   // Skip 
-  if ( key=='F' || key =='f' ) playList[0].skip( 0 );
-  if (key=='R' || key =='r' ) playList[0].skip( 1000 ); 
+  if ( key=='F' || key =='f' ) playList[currentSong].skip( 0 );
+  if (key=='R' || key =='r' ) playList[currentSong].skip( 1000 ); 
   //
   if ( key=='S' | key=='s' ) {
-    if ( playList[0].isPlaying() ) {
-      playList[0].pause();
+    if ( playList[currentSong].isPlaying() ) {
+      playList[currentSong].pause();
     } else {  
-      playList[0].rewind();
+      playList[currentSong].rewind();
     }
   }
+  */
 } //end keyPressed
 //
 void mousePressed() {
