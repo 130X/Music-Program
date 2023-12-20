@@ -1,17 +1,9 @@
-import java.io.*; //Music Player //Multi-soundcodes //How to import java?
-//
-import ddf.minim.*; 
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
-//
 //Global variables
 File musicFolder, SoundEffectsFolder;
 Minim minim;
-int numberOfSongs = 1,  numberOfSoundEffects = 2, currentSong=0;  //<>//
-AudioPlayer[] playlist = new AudioPlayer[numberOfSongs]; //
+int numberOfSongs = 1,  numberOfSoundEffects = 2; //<>//
+int currentSong=0;// Variable is rewritten in setup()
+AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs]; 
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
 color tropical = #30D15C;
@@ -20,6 +12,7 @@ PFont generalFont;
 void setup() {
   //size() or fullscreen()
   //Display Algorithm
+  //
 //Music file load
   String relativeMusicPathway = "Audio Library/songs/";
   String absoluteMusicPath = sketchPath( relativeMusicPathway ); 
@@ -56,9 +49,11 @@ void setup() {
     SoundEffects[i]=minim.loadFile( SoundEffectsFilePathway[i] );
   } //end SoundEffect load
   //
-  minim= new Minim(this);
-  //
   generalFont = createFont ("Algerian", 55);
+  //
+  currentSong = int ( random(0, numberOfSongs-1) ); 
+  //println("Random Start", currentSong);
+  //
   playList[currentSong].play();
 } // end setup
 // 
@@ -76,8 +71,19 @@ void draw() {
   textFont(generalFont, size); 
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
   fill(255); 
+  //
+  //Randon start 
+  currentSong = int (random(0, numberOfSongs-1) ); //casting truncates(rounding) the decimal
+  println("Random start", currentSong);
   // Autoplay, next song automatically plays
-  if () {} else {}
+  if ( playList[curremtSong].isplaying() ) { 
+  //empty if, TRUE 
+  } else {
+    //
+    playList[currentSong].rewind();
+    currentSong = currentSong + 1; //currentSong++;  currentSong+=1; 
+    playList[currentSong].play();
+  }
 } // end draw
 //
 void keyPressed() {
@@ -88,14 +94,23 @@ void keyPressed() {
   }
   //Play
   if ( key==' ' || key==' '  ) playList[cureentSong].play();
-  //Stop/Pause
-  if ( key=='' | key=='v' ) {
+  //Stop/Pause: ask if.playing() & .pause() & .rewind() & .rewind
+  if ( key=='S' | key=='s' ) {
     if ( playList[currentSong].isplaying()==true ) { 
       playList[currentSong].pause();
     } else {
-      playList[currentSong]play();
+      playList[currentSong].play();
     }
   }
+// Arrow Keys
+  if ( key==CODED && keyCode== RIGHT ) {
+  
+  } //end Next
+  //
+  if ( key==CODED && keyCode== LEFT ) {
+  
+  } //End Previous
+  
   //Loop broken keybinds 
   /*
   if ( key>= '1' || key<='9'  ) { 
