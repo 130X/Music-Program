@@ -11,6 +11,7 @@ AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
 color tropical = #30D15C;
 PFont generalFont;
+Boolean stopBoolean = flalse;
 //
 void setup() {
   //size() or fullscreen()
@@ -80,30 +81,36 @@ void draw() {
   println("Random start", currentSong);
   // Autoplay, next song automatically plays
   //ERROR; AutoPlay breaks STOP, there is never a song not playing
-  //ERRORL AutoPlay will break at the end of the play list
+  
   if ( playList[curremtSong].isplaying() ) { 
-  //empty if, TRUE 
+    if (stopBoolean == true ) playList[currentSong].pause();  //auto.rewind(); 
   } else {
-    //
-    playList[currentSong].rewind();
-    currentSong = currentSong + 1; //currentSong++;  currentSong+=1; 
+    if ( stopBoolean == true ) {
+    playList[currentSong].pause();
+    } else { 
+     playList[currentSong].position ) {
+     } else {
+           playList[currentSong].position() > playList[currentSong].position(10000 ) ) {} else {} 
+     } 
+      currentSong = currentSong + 1; //currentSong++;  currentSong+=1; 
+    // Shuffle randomizes the folder
     playList[currentSong].play();
+    
   }
 } // end draw
-//
 void keyPressed() {
-  SoundEffects[2].play();
-  if ( SoundEffects[2].position() ) {
-    SoundEffects[2].rewind();
-  } else {
-  }
+  if ( soundEffects[2].position()!=0 ) soundEffects[2].rewind();
+  soundEffects[2].play();
+  //
   //Play
   if ( key==' ' || key==' '  ) playList[currentSong].play();
   //Stop/Pause: ask if.playing() & .pause() & .rewind() & .rewind
   if ( key=='S' | key=='s' ) {
     if ( playList[currentSong].isplaying()==true ) { 
+      stopBoolean = true; 
       playList[currentSong].pause();
     } else {
+       stopBoolean = false; 
       playList[currentSong].play();
     }
   }
@@ -114,8 +121,8 @@ void keyPressed() {
   //
   if ( key==CODED && keyCode== LEFT ) {
     if ( .isPlaying() ) {
-     .pause()
-     .rewind()
+     .pause();
+     .rewind();
      currentSong = currentSong -1; //currentsong--; 
      .play();
     } else {
@@ -125,6 +132,7 @@ void keyPressed() {
     .pasue();
     .rewind();
   } //End Previous
+  
   
   //Loop broken keybinds 
   /*
