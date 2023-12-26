@@ -1,17 +1,20 @@
-import ddf.minim.Minim;
+//Music Player //Not working
+import java.io.*;
+//
+import ddf.minim.Minim.*;
 import ddf.minim.AudioMetaData;
 import ddf.minim.AudioPlayer;
 //Global variables
-File musicFolder, SoundEffectsFolder;
-Minim minim;
-int numberOfSongs = 1,  numberOfSoundEffects = 2; //<>//
-int currentSong=0;// Variable is rewritten in setup()
-AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
-AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs]; 
-AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C;
-PFont generalFont;
-Boolean stopBoolean = flalse;
+  File musicFolder, SoundEffectsFolder;
+  Minim minim;
+  int numberOfSongs = 1,  numberOfSoundEffects = 2; //<>//
+  int currentSong=0;// Variable is rewritten in setup()
+  AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
+  AudioMetaData[] playListMetaData = new AudioMetaData[numberOfsongs]; 
+  AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
+  color tropical = #30D15C;
+  PFont generalFont;
+  Boolean stopBoolean = flalse;
 //
 void setup() {
   //size() or fullscreen()
@@ -167,6 +170,6 @@ void keyPressed() {
 //
 void mousePressed() {
  //
-} //end mousePressed
+}//end mousePressed
 //
 // End Main Program
