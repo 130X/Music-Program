@@ -36,7 +36,7 @@ void setup() {
   }
   numberOfSongs = musicFileCount; 
   playList = new AudioPlayer[numberOfSongs]; 
-  printArrray(playList);
+  printArray(playList);
   playListMetaData = new AudioMetaData[numberOfSongs]; 
   for ( int i=0; i<musicFileCount; i++ ) {
     printArray(playList);
@@ -47,15 +47,15 @@ void setup() {
   String relativeSoundPathway = "Audio Library/SoundEffects/";//Relative pathay
   String absoluteSoundPath = sketchPath( relativeSoundPathway); // 
   SoundEffectsFolder = new File(absoluteSoundPath);
-  int SoundEffectsCount = SoundEffectsFolder.list().length;
+  int SoundEffectsFileCount = SoundEffectsFolder.list().length;
   File[] SoundEffectsFiles = SoundEffectsFolder.listFiles();
   String[] SoundEffectsFilePathway = new String[SoundEffectsFileCount];
   for ( int i = 0; i < SoundEffectsFiles.length; i++) { 
-   SoundEffectFilePathway[i] = ( SoundEffectsFiles[i].toString() );
+   SoundEffectsFilePathway[i] = ( SoundEffectsFiles[i].toString() );
   }
   //
-  numberofSoundEffects = SoundEffectsFileCount;
-  SoundEffects = newAudioPlayer[numberOfSoundEffects];
+  numberOfSoundEffects = SoundEffectsFileCount;
+  SoundEffects = new AudioPlayer[numberOfSoundEffects];
   for ( int i=0; i<SoundEffectsFileCount; i++ ) {
     SoundEffects[i]=minim.loadFile( SoundEffectsFilePathway[i] );
   } //end SoundEffect load
@@ -74,7 +74,7 @@ void draw() {
   //if ( playList[currentSong].islooping() && playList[currentSong].loopCount()==-1 ) println("Looping Infinitely"); 
   //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
-  //songMetaData[currentsong].title()
+  //songMetaData1[currentSong].title();
   rect(width*1/4, height*0, width*1/2, height*3/10);
   fill(tropical);
   textAlign (CENTER, CENTER);
@@ -85,8 +85,8 @@ void draw() {
   fill(255); 
   //
   // Autoplay, next song automatically plays
-  if ( playList[curremtSong].isplaying() ) { 
-    if (stopBoolean == true || pauseBoolean=true ) {
+  if ( playList[currentSong].isPlaying() ) { 
+    if ( stopBoolean == true || pauseBoolean==true ) {
       playList[currentSong].pause();  //auto.rewind(); 
     }
     if ( stopBoolean==true ) playList[currentSong].rewind();
@@ -106,45 +106,62 @@ void draw() {
       playList[currentSong].rewind();
       playList[currentSong].play();
       changeState=false;
-    
+      //
+   }
+   if ( pauseBoolean==false && stopBoolean==false  && changeState==true) {
+      playList[currentSong].play();
+      changeState=false;
+      //
+    }
   }
 } // end draw
 void keyPressed() {
-  if ( soundEffects[2].position()!=0 ) soundEffects[2].rewind();
-  soundEffects[2].play();
+  if ( SoundEffects[2].position() !=0 ) SoundEffects[2].rewind();
+ SoundEffects[2].play();
+  println ( "herek1", playList[currentSong].isPlaying(), pauseBoolean );
   //
   //Play
-  if ( key==' ' || key==' '  ) playList[currentSong].play();
-  //Stop/Pause: ask if.playing() & .pause() & .rewind() & .rewind
+  if ( key=='P' || key=='p'  ) {
+    changeState=true;
+    if  ( pauseBoolean==false ) {
+    println("herek2", pauseBoolean);
+ } else {
+   pauseBoolean=false;
+   println("herek3", pauseBoolean);
+ }
+ if ( stopBoolean==true ) { 
+   stopBoolean=false;
+ }
+ println( "herek4", playList[currentSong].isPlaying(), pauseBoolean, stopBoolean, changeState );
+ }
+ // Stop
   if ( key=='S' | key=='s' ) {
-    if ( playList[currentSong].isplaying()==true ) { 
-      stopBoolean = true; 
-      playList[currentSong].pause();
-    } else {
-       stopBoolean = false; 
-      playList[currentSong].play();
+    changeState=true;
+    if ( stopBoolean ==false ) {
+      stopBoolean = true;
+    } else { 
+      stopBoolean = false;
+      //
     }
   }
-// Arrow Keys
-  if ( key==CODED && keyCode== RIGHT ) {
-  
-  } //end Next
+  //Next and Previous
+  if ( key==CODED && keyCode==LEFT) { //Previous
+    if ( playList[currentSong].isPlaying() ) {
+     playList[currentSong].pause();
+     playList[currentSong].rewind();
+     if (currentSong==0) {
+       currentSong=numberOfSongs-1;
+     } else { 
+       currentSong = currentSong - 1;
+     }
+    }
+    println(currentSong);
+    playList[currentSong].play();
+  } //End Previous 
+  //Next
+  if ( key==CODED && keyCode==RIGHT ) { //Next
+  } //END Next
   //
-  if ( key==CODED && keyCode== LEFT ) {
-    if ( .isPlaying() ) {
-     .pause();
-     .rewind();
-     currentSong = currentSong -1; //currentsong--; 
-     .play();
-    } else {
-    
-    
-    } 
-    .pasue();
-    .rewind();
-  } //End Previous
-  
-  
   //Loop broken keybinds 
   /*
   if ( key>= '1' || key<='9'  ) { 
