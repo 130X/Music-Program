@@ -9,8 +9,8 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global variables
-  File musicFolder, SoundEffectsFolder;
   Minim minim;
+  File musicFolder, SoundEffectsFolder;
   int numberOfSongs = 1,  numberOfSoundEffects = 2; //<>//
   int currentSong=0;// Variable is rewritten in setup()
   AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
@@ -23,6 +23,7 @@ import ddf.minim.ugens.*;
 void setup() {
   //size() or fullscreen()
   //Display Algorithm
+  minim = new Minim(this);
   //
 //Music file load
   String relativeMusicPathway = "Audio Library/Songs/"; 
@@ -116,8 +117,8 @@ void draw() {
   }
 } // end draw
 void keyPressed() {
-  if ( SoundEffects[2].position() !=0 ) SoundEffects[2].rewind();
- SoundEffects[2].play();
+  if ( SoundEffects[0].position() !=0 ) SoundEffects[0].rewind();
+ SoundEffects[0].play();
   println ( "herek1", playList[currentSong].isPlaying(), pauseBoolean );
   //
   //Play
