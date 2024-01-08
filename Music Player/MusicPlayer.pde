@@ -1,4 +1,4 @@
-//Music Player //Not working
+//Music Player //not done
 import java.io.*;
 //
 import ddf.minim.*;
