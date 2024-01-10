@@ -21,7 +21,8 @@ import ddf.minim.ugens.*;
   Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //
 void setup() {
-  //size() or fullscreen()
+  size(700,600);
+  //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
   //
@@ -80,10 +81,10 @@ void draw() {
   fill(tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 10; 
+  int size = 15; 
   textFont(generalFont, size); 
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
-  fill(255); 
+  fill(50); 
   //
   // Autoplay, next song automatically plays
   if ( playList[currentSong].isPlaying() ) { 
@@ -117,8 +118,8 @@ void draw() {
   }
 } // end draw
 void keyPressed() {
-  if ( SoundEffects[0].position() !=0 ) SoundEffects[0].rewind();
- SoundEffects[0].play();
+  if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
+ SoundEffects[1].play();
   println ( "herek1", playList[currentSong].isPlaying(), pauseBoolean );
   //
   //Play
@@ -161,7 +162,19 @@ void keyPressed() {
   } //End Previous 
   //Next
   if ( key==CODED && keyCode==RIGHT ) { //Next
+   if ( playList[currentSong].isPlaying() ) {
+     playList[currentSong].pause();
+     playList[currentSong].rewind();
+     if (currentSong==1) {
+       currentSong=currentSong=numberOfSongs-1;
+     } else { 
+       currentSong = currentSong - 1;
+     }
+    }
+    println(currentSong);
+    playList[currentSong].play();
   } //END Next
+  
   //
   //Loop broken keybinds 
   /*
