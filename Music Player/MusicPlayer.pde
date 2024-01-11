@@ -11,8 +11,8 @@ import ddf.minim.ugens.*;
 //Global variables
   Minim minim;
   File musicFolder, SoundEffectsFolder;
-  int numberOfSongs = 1,  numberOfSoundEffects = 2; //<>//
-  int currentSong=0;// Variable is rewritten in setup()
+  int numberOfSongs = 2,  numberOfSoundEffects = 2; //<>//
+  int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
   AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
   AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs]; 
   AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
@@ -151,10 +151,12 @@ void keyPressed() {
     if ( playList[currentSong].isPlaying() ) {
      playList[currentSong].pause();
      playList[currentSong].rewind();
-     if (currentSong==0) {
-       currentSong=numberOfSongs-1;
+     if (currentSong == numberOfSongs - numberOfSongs ) {
+       //println()
+         currentSong = numberOfSongs - 1 ;
+         //println()
      } else { 
-       currentSong = currentSong - 1;
+     currentSong -= 1;
      }
     }
     println(currentSong);
@@ -165,13 +167,15 @@ void keyPressed() {
    if ( playList[currentSong].isPlaying() ) {
      playList[currentSong].pause();
      playList[currentSong].rewind();
-     if (currentSong==1) {
-       currentSong=currentSong=numberOfSongs-1;
+     if (currentSong == numberOfSongs - numberOfSongs ) {
+       //println()
+         currentSong = numberOfSongs + 1 ;
+         //println()
      } else { 
        currentSong = currentSong - 1;
      }
     }
-    println(currentSong);
+    println(currentSong);  
       playList[currentSong].play();
   } //END Next
   
