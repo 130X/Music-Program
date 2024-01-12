@@ -11,8 +11,7 @@ import ddf.minim.ugens.*;
 //Global variables
   Minim minim;
   File musicFolder, SoundEffectsFolder;
-  int numberOfSongs = 2,  numberOfSoundEffects = 2;
-  int numberOfSongs = 2,  numberOfSoundEffects = 2; //<>// //<>//
+  int numberOfSongs = 2,  numberOfSoundEffects = 2; //<>//
   int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
   AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
   AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs]; 
@@ -84,7 +83,6 @@ void draw() {
   //
   int size = 20; 
   textFont(generalFont, size); 
-  text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
   fill(255); 
   //
@@ -187,10 +185,8 @@ void keyPressed() {
     println(currentSong);
       playList[currentSong].play();
   } //END Next
-  //Mute
-   if ( key=='M' || key=='m' ) { //mute
   //Mute 
-  //A pretty easy button If the song ismuted then it unmutes the sound
+  //A pretty easy button If the song is muted then it unmutes the sound
   //but if its unmuted and you press M/m then it mutes it
    if ( key=='M' || key=='m' ) { 
     if ( playList[currentSong].isMuted() ) {
@@ -200,11 +196,6 @@ void keyPressed() {
     }
   } 
   //Skip Forward and Backward
-  // Skip 
-  if ( key=='D' || key =='d' ) playList[currentSong].skip( 3000 ); //Forward 3 seconds
-  if (key=='A' || key =='a' ) playList[currentSong].skip( -3000 ); //Backwards 3 seconds
-  //
-  //Skip
   //if you press D or A  it skips 5000 miliseconds back or forward which is 5 seconds
   if ( key=='D' || key =='d' ) playList[currentSong].skip( 5000 );//Forward 3 seconds
   if (key=='A' || key =='a' ) playList[currentSong].skip( -5000 ); //Backw 3 seconds
