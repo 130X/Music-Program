@@ -21,8 +21,8 @@ import ddf.minim.ugens.*;
   Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //
 void setup() {
-  //size(1000,800);
-  fullScreen();
+  size(800,700);
+  //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
   //
