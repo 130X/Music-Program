@@ -11,11 +11,8 @@ import ddf.minim.ugens.*;
 //Global variables
   Minim minim;
   File musicFolder, SoundEffectsFolder;
-<<<<<<< HEAD
   int numberOfSongs = 2,  numberOfSoundEffects = 2;
-=======
   int numberOfSongs = 2,  numberOfSoundEffects = 2; //<>// //<>//
->>>>>>> dd6e275a44621373986869908e3b4eed5a9b0e25
   int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
   AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
   AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs]; 
@@ -87,11 +84,8 @@ void draw() {
   //
   int size = 20; 
   textFont(generalFont, size); 
-<<<<<<< HEAD
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
-=======
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
->>>>>>> dd6e275a44621373986869908e3b4eed5a9b0e25
   fill(255); 
   //
   // Autoplay, next song automatically plays 
@@ -183,11 +177,8 @@ void keyPressed() {
      playList[currentSong].rewind();
      if (currentSong == 2 ) {
        //println()
-<<<<<<< HEAD
          currentSong = numberOfSongs - 1 ;
-=======
          currentSong = numberOfSongs - numberOfSongs ;
->>>>>>> dd6e275a44621373986869908e3b4eed5a9b0e25
          //println()
      } else { 
        currentSong = currentSong + 1;
@@ -196,34 +187,27 @@ void keyPressed() {
     println(currentSong);
       playList[currentSong].play();
   } //END Next
-<<<<<<< HEAD
   //Mute
    if ( key=='M' || key=='m' ) { //mute
-=======
   //Mute 
   //A pretty easy button If the song ismuted then it unmutes the sound
   //but if its unmuted and you press M/m then it mutes it
    if ( key=='M' || key=='m' ) { 
->>>>>>> dd6e275a44621373986869908e3b4eed5a9b0e25
     if ( playList[currentSong].isMuted() ) {
       playList[currentSong].unmute();
     } else {
       playList[currentSong].mute();
     }
   } 
-<<<<<<< HEAD
   //Skip Forward and Backward
   // Skip 
   if ( key=='D' || key =='d' ) playList[currentSong].skip( 3000 ); //Forward 3 seconds
   if (key=='A' || key =='a' ) playList[currentSong].skip( -3000 ); //Backwards 3 seconds
   //
-  //
-=======
   //Skip
   //if you press D or A  it skips 5000 miliseconds back or forward which is 5 seconds
   if ( key=='D' || key =='d' ) playList[currentSong].skip( 5000 );//Forward 3 seconds
   if (key=='A' || key =='a' ) playList[currentSong].skip( -5000 ); //Backw 3 seconds
->>>>>>> dd6e275a44621373986869908e3b4eed5a9b0e25
   //Loop broken keybinds 
   /*
   if ( key>= '1' || key<='9'  ) { 
@@ -233,13 +217,10 @@ void keyPressed() {
   playList[currentSong].loop(loopNum);
   }
     if ( key=='L' || key=='l' ) playList[currentSong].loop(); //Infinite Loop, no parameter OR -1
-<<<<<<< HEAD
   // Skip 
   if ( key=='D' || key =='d' ) playList[currentSong].skip( 1000 );
   if (key=='A' || key =='a' ) playList[currentSong].skip( -1000 ); 
   //
-=======
->>>>>>> dd6e275a44621373986869908e3b4eed5a9b0e25
   if ( key=='S' | key=='s' ) {
     if ( playList[currentSong].isPlaying() ) {
       playList[currentSong].pause();
