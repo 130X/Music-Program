@@ -21,8 +21,8 @@ import ddf.minim.ugens.*;
   Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //
 void setup() {
-  size(700,600);
-  //fullScreen();
+  //size(1000,800);
+  fullScreen();
   //Display Algorithm
   minim = new Minim(this);
   //
@@ -76,15 +76,15 @@ void draw() {
   //if ( playList[currentSong].islooping() && playList[currentSong].loopCount()==-1 ) println("Looping Infinitely"); 
   //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
-  //songMetaData1[currentSong].title();
+  //AudioMetaData[currentSong].title();
   rect(width*1/4, height*0, width*1/2, height*3/10);
   fill(tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 15; 
+  int size = 20; 
   textFont(generalFont, size); 
-  //text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
-  fill(50); 
+  text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
+  fill(255); 
   //
   // Autoplay, next song automatically plays 
   if ( playList[currentSong].isPlaying() ) { 
@@ -148,6 +148,10 @@ void keyPressed() {
     }
   }
   //Next and Previous
+  //For Next You have to press the Right Key and  IF theres a song playing it will
+  //pause it then rewind it then it would play next song; 
+  //if statement is to find out if its on the last song and if it is it will restart and play the first song of the playlist
+  //THe opposite is true for the previous button
   if ( key==CODED && keyCode==LEFT) { //Previous
     if ( playList[currentSong].isPlaying() ) {
      playList[currentSong].pause();
@@ -180,6 +184,8 @@ void keyPressed() {
       playList[currentSong].play();
   } //END Next
   //Mute 
+  //A pretty easy button If the song ismuted then it unmutes the sound
+  //but if its unmuted and you press M/m then it mutes it
    if ( key=='M' || key=='m' ) { 
     if ( playList[currentSong].isMuted() ) {
       playList[currentSong].unmute();
@@ -188,8 +194,9 @@ void keyPressed() {
     }
   } 
   //Skip
-  if ( key=='D' || key =='d' ) playList[currentSong].skip( 1000 );//Forward 3 seconds
-  if (key=='A' || key =='a' ) playList[currentSong].skip( -1000 ); //Backw 3 seconds
+  //if you press D or A  it skips 5000 miliseconds back or forward which is 5 seconds
+  if ( key=='D' || key =='d' ) playList[currentSong].skip( 5000 );//Forward 3 seconds
+  if (key=='A' || key =='a' ) playList[currentSong].skip( -5000 ); //Backw 3 seconds
   //Loop broken keybinds 
   /*
   if ( key>= '1' || key<='9'  ) { 
