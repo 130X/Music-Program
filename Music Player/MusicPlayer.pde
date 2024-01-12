@@ -83,10 +83,10 @@ void draw() {
   //
   int size = 15; 
   textFont(generalFont, size); 
-  text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
+  //text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10 );
   fill(50); 
   //
-  // Autoplay, next song automatically plays
+  // Autoplay, next song automatically plays 
   if ( playList[currentSong].isPlaying() ) { 
     if ( stopBoolean == true || pauseBoolean==true ) {
       playList[currentSong].pause();  //auto.rewind(); 
@@ -115,7 +115,8 @@ void draw() {
       changeState=false;
       //
     }
-  }
+  } //End Autoplay 
+  
 } // end draw
 void keyPressed() {
   if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
@@ -151,10 +152,10 @@ void keyPressed() {
     if ( playList[currentSong].isPlaying() ) {
      playList[currentSong].pause();
      playList[currentSong].rewind();
-     if (currentSong == numberOfSongs - numberOfSongs ) {
-       //println()
+     if (currentSong == 0) {
+       //
          currentSong = numberOfSongs - 1 ;
-         //println()
+         //
      } else { 
      currentSong -= 1;
      }
@@ -167,15 +168,15 @@ void keyPressed() {
    if ( playList[currentSong].isPlaying() ) {
      playList[currentSong].pause();
      playList[currentSong].rewind();
-     if (currentSong == numberOfSongs - numberOfSongs ) {
+     if (currentSong == 2 ) {
        //println()
-         currentSong = numberOfSongs - 1 ;
+         currentSong = numberOfSongs - numberOfSongs ;
          //println()
      } else { 
-       currentSong = currentSong - 1;
+       currentSong = currentSong + 1;
      }
     }
-    println(currentSong);  
+    println(currentSong);
       playList[currentSong].play();
   } //END Next
   //Mute 
