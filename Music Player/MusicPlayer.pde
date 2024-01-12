@@ -11,7 +11,7 @@ import ddf.minim.ugens.*;
 //Global variables
   Minim minim;
   File musicFolder, SoundEffectsFolder;
-  int numberOfSongs = 2,  numberOfSoundEffects = 2; //<>//
+  int numberOfSongs = 2,  numberOfSoundEffects = 2; //<>// //<>//
   int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
   AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
   AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs]; 
@@ -169,7 +169,7 @@ void keyPressed() {
      playList[currentSong].rewind();
      if (currentSong == numberOfSongs - numberOfSongs ) {
        //println()
-         currentSong = numberOfSongs + 1 ;
+         currentSong = numberOfSongs - 1 ;
          //println()
      } else { 
        currentSong = currentSong - 1;
@@ -178,8 +178,17 @@ void keyPressed() {
     println(currentSong);  
       playList[currentSong].play();
   } //END Next
-  
-  //
+  //Mute 
+   if ( key=='M' || key=='m' ) { 
+    if ( playList[currentSong].isMuted() ) {
+      playList[currentSong].unmute();
+    } else {
+      playList[currentSong].mute();
+    }
+  } 
+  //Skip
+  if ( key=='D' || key =='d' ) playList[currentSong].skip( 1000 );//Forward 3 seconds
+  if (key=='A' || key =='a' ) playList[currentSong].skip( -1000 ); //Backw 3 seconds
   //Loop broken keybinds 
   /*
   if ( key>= '1' || key<='9'  ) { 
@@ -189,18 +198,6 @@ void keyPressed() {
   playList[currentSong].loop(loopNum);
   }
     if ( key=='L' || key=='l' ) playList[currentSong].loop(); //Infinite Loop, no parameter OR -1
-  //Mute 
-  if ( key=='M' || key=='m' ) { 
-    if ( playList[currentSong].isMuted() ) {
-      playList[currentSong].unmute();
-    } else {
-      playList[currentSong].mute();
-    }
-  } 
-  // Skip 
-  if ( key=='F' || key =='f' ) playList[currentSong].skip( 0 );
-  if (key=='R' || key =='r' ) playList[currentSong].skip( 1000 ); 
-  //
   if ( key=='S' | key=='s' ) {
     if ( playList[currentSong].isPlaying() ) {
       playList[currentSong].pause();
