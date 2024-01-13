@@ -16,7 +16,7 @@ import ddf.minim.ugens.*;
   AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
   AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs]; 
   AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-  color tropical = #30D15C;
+  color tropical = #30D15C; 
   PFont generalFont;
   Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //
@@ -25,7 +25,6 @@ void setup() {
   //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
-  //
 //Music file load
   String relativeMusicPathway = "Audio Library/Songs/"; 
   String absoluteMusicPath = sketchPath( relativeMusicPathway ); 
@@ -81,7 +80,7 @@ void draw() {
   fill(tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 20; 
+  int size = 30; 
   textFont(generalFont, size); 
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
   fill(255); 
