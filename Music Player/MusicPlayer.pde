@@ -77,11 +77,11 @@ void draw() {
   //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
  // AudioMetaData[currentSong].title();
-  rect(width*1/4, height*0, width*1/2, height*3/10);
+  rect(width*1/4, height*1/3, width*1/2, height*1/3);
   fill(tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 20; 
+  int size = 10; 
   textFont(generalFont, size); 
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
   fill(255); 
