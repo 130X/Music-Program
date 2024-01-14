@@ -63,6 +63,7 @@ void setup() {
   //
   generalFont = createFont ("Algerian", 55);
   //
+  //currentSong =  numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
   currentSong = int ( random(0, numberOfSongs-1) ); 
   //println("Random Start", currentSong);
   //
@@ -75,12 +76,12 @@ void draw() {
   //if ( playList[currentSong].islooping() && playList[currentSong].loopCount()==-1 ) println("Looping Infinitely"); 
   //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
-  //AudioMetaData[currentSong].title();
+ // AudioMetaData[currentSong].title();
   rect(width*1/4, height*0, width*1/2, height*3/10);
   fill(tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 30; 
+  int size = 20; 
   textFont(generalFont, size); 
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
   fill(255); 
