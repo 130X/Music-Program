@@ -128,7 +128,7 @@ void keyPressed() {
       pauseBoolean=true;
     } else { 
       pauseBoolean=false;
-      playList[currentSong].play();
+      //playList[currentSong].play();
   }
   if ( stopBoolean==true ) { 
     stopBoolean=false;
@@ -149,11 +149,14 @@ void keyPressed() {
   //Pause 
   if ( key=='K'|| key=='k' ) { 
     changeState = true;
-    
-      playList[currentSong].pause(); 
+    if (!pauseBoolean) {
+      pauseBoolean = true;
     } else { 
-      playList[currentSong].play();
+      pauseBoolean = false;
     } 
+    if (stopBoolean) { 
+      stopBoolean = false;
+    }
   }
   //Next and Previous
   //For Next You have to press the Right Key and  IF theres a song playing it will
@@ -198,14 +201,28 @@ void keyPressed() {
   if ( key=='M' || key=='m' ) {
     if ( playList[currentSong].isMuted() ) {
       playList[currentSong].unmute();
+      println("unmuted");
     } else {
       playList[currentSong].mute();
+      println("muted")
     }
   }
   //Skip Forward and Backward
-  //if you press D or A  it skips 5000 miliseconds back or forward which is 5 seconds
-  if ( key=='D' || key =='d' ) playList[currentSong].skip( 5000 );//Forward 3 seconds
-  if (key=='A' || key =='a' ) playList[currentSong].skip( -5000 ); //Backw 3 seconds
+  //if you press D or A  it skips 5000 miliseconds back or forward which is the same as 5 seconds
+  //Forward
+  if ( key=='D' || key =='d' ) {
+    changeState = true; 
+    playList[currentSong].skip( 5000 );
+      println(" +5 Seconds");   
+  }
+  // Backward
+  if (key=='A' || key =='a' ) {
+    changeState = true;
+     playList[currentSong].skip( -5000 );
+      println(" -5 Seconds");
+  }
+  //
+  //
   //Loop broken keybinds
   /*
   if ( key>= '1' || key<='9'  ) {
