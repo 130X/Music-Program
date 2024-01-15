@@ -128,36 +128,25 @@ void keyPressed() {
       pauseBoolean=true;
     } else { 
       pauseBoolean=false;
-      //playList[currentSong].play();
+      playList[currentSong].play();
   }
   if ( stopBoolean==true ) { 
     stopBoolean=false;
   } 
   }
   //
-  //Stop and and restarts it 
-  if ( key=='S' || key=='s' ) {
-    changeState=true;
-    if ( stopBoolean== false) { 
-      stopBoolean = true;
-      playList[currentSong].pause();
-    } else { 
-      stopBoolean = false;
-  }
-  }
-  //
-  //Pause 
-  if ( key=='K'|| key=='k' ) { 
+  //pauses
+  if ( key=='S'|| key=='s'  ) {
     changeState = true;
-    if (!pauseBoolean) {
-      pauseBoolean = true;
-    } else { 
-      pauseBoolean = false;
-    } 
-    if (stopBoolean) { 
-      stopBoolean = false;
+    if ( pauseBoolean==false ) {
+        pauseBoolean = true;
+        playList[currentSong].pause();
+    } else {
+        pauseBoolean = false;
+        // Optionally, you can resume playing here if needed:
+        // playList[currentSong].play();
     }
-  }
+}
   //Next and Previous
   //For Next You have to press the Right Key and  IF theres a song playing it will
   //pause it then rewind it then it would play next song;
@@ -204,7 +193,7 @@ void keyPressed() {
       println("unmuted");
     } else {
       playList[currentSong].mute();
-      println("muted")
+      println("muted");
     }
   }
   //Skip Forward and Backward
