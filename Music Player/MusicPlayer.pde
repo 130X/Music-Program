@@ -123,10 +123,36 @@ void keyPressed() {
   //
   //Play
   if ( key=='P' || key=='p'  ) {
+    changeState = true;
+    if ( pauseBoolean==false) { 
+      pauseBoolean=true;
+    } else { 
+      pauseBoolean=false;
+      //playList[currentSong].play();
   }
-    //
-  // Stop
-  if ( key=='S' | key=='s' ) {
+  if ( stopBoolean==true ) { 
+    stopBoolean=false;
+  } 
+  }
+  //
+  //Stop But it restarts from the beginning
+  if ( key=='S' || key=='s' ) {
+    changeState=true;
+    if ( stopBoolean== false) { 
+      stopBoolean = true;
+      playList[currentSong].pause();
+    } else { 
+      stopBoolean = false;
+  }
+  }
+  //
+  //Pause 
+  if ( key=='K'|| key=='k' ) { 
+    if ( playList[currentSong].pauseBoolean==false ) {
+      playList[currentSong].pause(); 
+    } else { 
+      playList[currentSong].play();
+    } 
   }
   //Next and Previous
   //For Next You have to press the Right Key and  IF theres a song playing it will
@@ -188,17 +214,6 @@ void keyPressed() {
    playList[currentSong].loop(loopNum);
    }
    if ( key=='L' || key=='l' ) playList[currentSong].loop(); //Infinite Loop, no parameter OR -1
-   // Skip
-   if ( key=='D' || key =='d' ) playList[currentSong].skip( 1000 );
-   if (key=='A' || key =='a' ) playList[currentSong].skip( -1000 );
-   //
-   if ( key=='S' | key=='s' ) {
-   if ( playList[currentSong].isPlaying() ) {
-   playList[currentSong].pause();
-   } else {
-   playList[currentSong].rewind();
-   }
-   }
    */
 } //end keyPressed
 //
