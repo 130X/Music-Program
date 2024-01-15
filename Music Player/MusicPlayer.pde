@@ -11,7 +11,7 @@ import ddf.minim.ugens.*;
 //Global variables
 Minim minim;
 File musicFolder, SoundEffectsFolder;
-int numberOfSongs = 2, numberOfSoundEffects = 2;
+int numberOfSongs = 2, numberOfSoundEffects = 2; //<>//
 int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
@@ -128,14 +128,14 @@ void keyPressed() {
       pauseBoolean=true;
     } else { 
       pauseBoolean=false;
-      //playList[currentSong].play();
+      playList[currentSong].play();
   }
   if ( stopBoolean==true ) { 
     stopBoolean=false;
   } 
   }
   //
-  //Stop But it restarts from the beginning
+  //Stop and and restarts it 
   if ( key=='S' || key=='s' ) {
     changeState=true;
     if ( stopBoolean== false) { 
@@ -148,7 +148,8 @@ void keyPressed() {
   //
   //Pause 
   if ( key=='K'|| key=='k' ) { 
-    if ( playList[currentSong].pauseBoolean==false ) {
+    changeState = true;
+    
       playList[currentSong].pause(); 
     } else { 
       playList[currentSong].play();
