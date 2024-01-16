@@ -71,11 +71,7 @@ void setup() {
 } // end setup
 //
 void draw() {
-  //
-  //if ( playList[currentSong].islooping() && playList[currentSong].loopCount()=-1 ) println("there are", playList[currentSong].loopCount(), "loops left");
-  //if ( playList[currentSong].islooping() && playList[currentSong].loopCount()==-1 ) println("Looping Infinitely");
-  //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
-  //
+  //Title
   // AudioMetaData[currentSong].title();
   rect  ( width*1/4, height*1/3, width*1/2, height*1/3 );
   fill  ( tropical);
@@ -83,8 +79,9 @@ void draw() {
   //
   int size = 20;
   textFont  ( generalFont, size);
-  fill  ( 255);
+  fill  ( 255 );
   text  ( playListMetaData[currentSong].title(), width*1/4, height*1/3, width*1/2, height*1/3 );
+  //
   //
   // Autoplay, next song automatically plays
   if ( playList[currentSong].isPlaying() ) {
@@ -174,8 +171,7 @@ void keyPressed() {
       playList[currentSong].pause();
       playList[currentSong].rewind();
       if (currentSong == 2 ) {
-        //println()
-        currentSong = numberOfSongs - 1 ;
+        //
         currentSong = numberOfSongs - numberOfSongs ;
         //println()
       } else {
