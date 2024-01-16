@@ -16,7 +16,7 @@ int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C;
+color tropical = #30D15C, resetColour = #FFFFFF;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //
@@ -73,15 +73,15 @@ void setup() {
 void draw() {
   //Title
   // AudioMetaData[currentSong].title();
+  generalFont = createFont ("Algerian", 30);
   rect  ( width*1/4, height*1/3, width*1/2, height*1/3 );
   fill  ( tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 20;
+  int size = 10;
   textFont  ( generalFont, size);
-  fill  ( 255 );
   text  ( playListMetaData[currentSong].title(), width*1/4, height*1/3, width*1/2, height*1/3 );
-  //
+  fill  ( resetColour );
   //
   // Autoplay, next song automatically plays
   if ( playList[currentSong].isPlaying() ) {
