@@ -21,7 +21,7 @@ PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //
 void setup() {
-  size(800, 700);
+  size(900, 700);
   //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
@@ -125,24 +125,25 @@ void keyPressed() {
   if ( key=='P' || key=='p'  ) {
     changeState = true;
     if ( pauseBoolean==false) { 
-      pauseBoolean=true;
+      //pauseBoolean=true;
+      //println("paused");
     } else { 
       pauseBoolean=false;
       playList[currentSong].play();
+      println("played");
   }
-  if ( stopBoolean==true ) { 
-    stopBoolean=false;
-  } 
   }
   //
-  //pauses
+  //Pause
   if ( key=='S'|| key=='s'  ) {
     changeState = true;
     if ( pauseBoolean==false ) {
         pauseBoolean = true;
         playList[currentSong].pause();
+        println("paused");
     } else {
-        pauseBoolean = false;
+        //pauseBoolean = false;
+        //println("play");
         // Optionally, you can resume playing here if needed:
         // playList[currentSong].play();
     }
