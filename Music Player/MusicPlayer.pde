@@ -61,7 +61,7 @@ void setup() {
     SoundEffects[i]=minim.loadFile( SoundEffectsFilePathway[i] );
   } //end SoundEffect load
   //
-  generalFont = createFont ("Algerian", 55);
+  generalFont = createFont ("Algerian", 30);
   //
   //currentSong =  numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
   currentSong = int ( random(0, numberOfSongs-1) );
@@ -77,14 +77,14 @@ void draw() {
   //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
   // AudioMetaData[currentSong].title();
-  rect(width*1/4, height*1/3, width*1/2, height*1/3);
-  fill(tropical);
+  rect  ( width*1/4, height*1/3, width*1/2, height*1/3 );
+  fill  ( tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 10;
-  textFont(generalFont, size);
-  text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10 );
-  fill(255);
+  int size = 20;
+  textFont  ( generalFont, size);
+  fill  ( 255);
+  text  ( playListMetaData[currentSong].title(), width*1/4, height*1/3, width*1/2, height*1/3 );
   //
   // Autoplay, next song automatically plays
   if ( playList[currentSong].isPlaying() ) {
@@ -118,8 +118,8 @@ void draw() {
   } //End Autoplay
 } // end draw
 void keyPressed() {
-  if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
-  SoundEffects[1].play();
+  //if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
+  //SoundEffects[1].play();
   //
   //Play
   if ( key=='P' || key=='p'  ) {
