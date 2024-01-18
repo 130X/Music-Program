@@ -20,11 +20,8 @@ color tropical = #30D15C, resetColour = #FFFFFF;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
 //image
-int appWidth, appHeight;
-float playX, playY, playWidth, playHeight;
-float pauseX, pauseY, pauseWidth, pauseHeight;
-float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-
+PImage play, pause, mute, unmute, forward, backward, next, previous, close;
+//
 void setup() {
   size(900, 700);
   //fullScreen();
@@ -74,9 +71,18 @@ void setup() {
   //
   playList[currentSong].play();
   //
-//Button Population
-  
-//Pathways
+//Pathways for image
+  String imagePathway = "images/";
+  //
+  play = loadImage(imagePathway + "play.png");
+  pause = loadImage(imagePathway + "pause.png");
+  mute = loadImage(imagePathway + "mute.png");
+  unmute = loadImage(imagePathway + "unmute.png");
+  forward = loadImage(imagePathway + "forward.png");
+  backward = loadImage(imagePathway + "backward.png");
+  next = loadImage(imagePathway + "next.png");
+  previous = loadImage(imagePathway + "previous.png");
+  close = loadImage(imagePathway + "close.png");
   //
 } // end setup
 //
@@ -84,13 +90,13 @@ void draw() {
   //Title
   // AudioMetaData[currentSong].title();
   generalFont = createFont ("Algerian", 30);
-  rect  ( width*1/4, height*1/3, width*1/2, height*1/3 );
+  rect  ( width*1/4, height*0, width*1/2, height*1/5 );
   fill  ( tropical);
   textAlign (CENTER, CENTER);
   //
-  int size = 10;
+  int size = 30;
   textFont  ( generalFont, size);
-  text  ( playListMetaData[currentSong].title(), width*1/4, height*1/3, width*1/2, height*1/3 );
+  text  ( playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/5 );
   fill  ( resetColour );
   //
   // Autoplay, next song automatically plays
@@ -123,23 +129,22 @@ void draw() {
       //
     }
   } //End Autoplay
-//Image 
-  //rect();
-  //image();
-  /*
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  image();
-  /*
+//Image Positions 
+  image (play, width*1/2, height*9/10, width*1/10, height*1/10  );
+  image(pause,  width*1/2, height*9/10, width*1/10, height*1/10);
+  //
+  image(forward, width*3/5, height*9/10, width*1/10, height*1/10 );
+  image(backward, width*2/5, height*9/10, width*1/10, height*1/10);
+  //
+  image(next, width*4.5/5, height*9/10, width*1/10, height*1/10 );
+  image(previous, width*0/5, height*9/10, width*1/10, height*1/10);
+  //
+  image(mute, width*3.5/5, height*9/10, width*1/10, height*1/10 );
+  image(unmute, width*3.5/5, height*9/10, width*1/10, height*1/10);
+  //
+  image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
+  //
+  //
 } // end draw
 void keyPressed() {
   //if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
