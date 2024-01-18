@@ -1,4 +1,4 @@
-import java.io.*; //<>//
+import java.io.*; //<>// //<>//
 //Music Player //not done
 //
 import ddf.minim.*;
@@ -11,14 +11,14 @@ import ddf.minim.ugens.*;
 //Global variables
 Minim minim;
 File musicFolder, SoundEffectsFolder;
-int numberOfSongs = 2, numberOfSoundEffects = 2; //<>//
+int numberOfSongs = 2, numberOfSoundEffects = 2;
 int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C, resetColour = #FFFFFF;
+color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc;
 PFont generalFont;
-Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
+Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false;
 //image
 PImage play, pause, mute, unmute, forward, backward, next, previous, close;
 //
@@ -71,7 +71,7 @@ void setup() {
   //
   playList[currentSong].play();
   //
-//Pathways for image
+  //Pathways for image
   String imagePathway = "images/";
   //
   play = loadImage(imagePathway + "play.png");
@@ -129,9 +129,17 @@ void draw() {
       //
     }
   } //End Autoplay
-//Image Positions 
-  image (play, width*1/2, height*9/10, width*1/10, height*1/10  );
-  image(pause,  width*1/2, height*9/10, width*1/10, height*1/10);
+  //Image Positions
+  noStroke();
+  fill(grey);
+  rect( width*1/2, height*9/10, width*1/10, height*1/10);
+  stroke(1);
+  fill(resetColour);
+  if (playButtonBoolean == false) {
+    image (pause, width*1/2, height*9/10, width*1/10, height*1/10  );
+  } else {
+    image(play, width*1/2, height*9/10, width*1/10, height*1/10);
+  }
   //
   image(forward, width*3/5, height*9/10, width*1/10, height*1/10 );
   image(backward, width*2/5, height*9/10, width*1/10, height*1/10);
@@ -153,30 +161,32 @@ void keyPressed() {
   //Play
   if ( key=='P' || key=='p'  ) {
     changeState = true;
-    if ( pauseBoolean==false) { 
+    if ( pauseBoolean==false) {
       //pauseBoolean=true;
       //println("paused");
-    } else { 
+    } else {
+      playButtonBoolean = true;
       pauseBoolean=false;
       playList[currentSong].play();
       println("played");
-  }
+    }
   }
   //
   //Pause
   if ( key=='S'|| key=='s'  ) {
     changeState = true;
     if ( pauseBoolean==false ) {
-        pauseBoolean = true;
-        playList[currentSong].pause();
-        println("paused");
+      pauseBoolean = true;
+      playButtonBoolean = false;
+      playList[currentSong].pause();
+      println("paused");
     } else {
-        //pauseBoolean = false;
-        //println("play");
-        // Optionally, you can resume playing here if needed:
-        // playList[currentSong].play();
+      //pauseBoolean = false;
+      //println("play");
+      // Optionally, you can resume playing here if needed:
+      // playList[currentSong].play();
     }
-}
+  }
   //Next and Previous
   //For Next You have to press the Right Key and  IF theres a song playing it will
   //pause it then rewind it then it would play next song;
@@ -229,15 +239,15 @@ void keyPressed() {
   //if you press D or A  it skips 5000 miliseconds back or forward which is the same as 5 seconds
   //Forward
   if ( key=='D' || key =='d' ) {
-    changeState = true; 
+    changeState = true;
     playList[currentSong].skip( 5000 );
-      println(" +5 Seconds");   
+    println(" +5 Seconds");
   }
   // Backward
   if (key=='A' || key =='a' ) {
     changeState = true;
-     playList[currentSong].skip( -5000 );
-      println(" -5 Seconds");
+    playList[currentSong].skip( -5000 );
+    println(" -5 Seconds");
   }
   //
   //
@@ -254,6 +264,15 @@ void keyPressed() {
 } //end keyPressed
 //
 void mousePressed() {
+  if ( mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) {
+    if (playButtonBoolean == false) {
+      playButtonBoolean = true;
+      playList[currentSong].play();
+    } else {
+      playButtonBoolean=false;
+      playList[currentSong].pause();
+    }
+  }
   //
 }//end mousePressed
 //
