@@ -19,7 +19,12 @@ AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
 color tropical = #30D15C, resetColour = #FFFFFF;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false;
-//
+//image
+int appWidth, appHeight;
+float playX, playY, playWidth, playHeight;
+float pauseX, pauseY, pauseWidth, pauseHeight;
+float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
+
 void setup() {
   size(900, 700);
   //fullScreen();
@@ -68,6 +73,11 @@ void setup() {
   //println("Random Start", currentSong);
   //
   playList[currentSong].play();
+  //
+//Button Population
+  
+//Pathways
+  //
 } // end setup
 //
 void draw() {
@@ -113,6 +123,23 @@ void draw() {
       //
     }
   } //End Autoplay
+//Image 
+  //rect();
+  //image();
+  /*
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  image();
+  /*
 } // end draw
 void keyPressed() {
   //if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
