@@ -291,10 +291,10 @@ void mousePressed() {
     playList[currentSong].skip(-5000);
     println("-5");
   }
-  //mute and unmute
-  //if ();
-  //if
+  //close
+  width*4.5/5, height*0.1/10, width*1/10, height*1/10
+ if (mouseX>width*2/5 && mouseX<width*2/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) exit();
   //
 }//end mousePressed
-//
+// []'//////
 // End Main Program
