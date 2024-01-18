@@ -280,6 +280,40 @@ void mousePressed() {
   }
   {
   }
+  //Next and Previous
+  //Next
+  if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
+    if ( playList[currentSong].isPlaying() ) {
+      playList[currentSong].pause();
+      playList[currentSong].rewind();
+      if (currentSong == 2 ) {
+        //
+        currentSong = numberOfSongs - numberOfSongs ;
+        //println()
+      } else {
+        currentSong = currentSong + 1;
+      }
+    }
+    println(currentSong);
+    playList[currentSong].play();
+  } //END Next
+  //Previous 
+  if (mouseX>width*0/5 && mouseX<width*0/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
+    if ( playList[currentSong].isPlaying() ) {
+      playList[currentSong].pause();
+      playList[currentSong].rewind();
+      if (currentSong == 0) {
+        //
+        currentSong = numberOfSongs - 1 ;
+        //
+      } else {
+        currentSong -= 1;
+      }
+    }
+    println(currentSong);
+    playList[currentSong].play();
+  } //End Previous
+  //
   //Skip backward and forward
   //forward
   if (mouseX>width*3/5 && mouseX<width*3/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
@@ -292,8 +326,7 @@ void mousePressed() {
     println("-5");
   }
   //close
-  width*4.5/5, height*0.1/10, width*1/10, height*1/10
- if (mouseX>width*2/5 && mouseX<width*2/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) exit();
+ if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) exit();
   //
 }//end mousePressed
 // []'//////
