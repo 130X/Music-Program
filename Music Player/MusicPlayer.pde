@@ -1,5 +1,5 @@
 import java.io.*; //<>// //<>//
-//Music Player //not done
+//Music Player //not done //aspect ratio and get buttons working
 //
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -21,10 +21,11 @@ PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteButtonBoolean = false;
 //image
 PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover;
+color hoverovercolour=resetColour;
 //float EvoWidth, EvoHeight;
 //
 void setup() {
-  size(900, 700);
+  size(1000, 800);
   //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
@@ -115,9 +116,10 @@ void draw() {
   fill(grey);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
   stroke(1);
-  fill(resetColour);
+  fill(hoverovercolour);
   if (playButtonBoolean == false) {
     image (pause, width*1/2, height*9/10, width*1/10, height*1/10  );
+   
   } else {
     image(play, width*1/2, height*9/10, width*1/10, height*1/10);
   }
