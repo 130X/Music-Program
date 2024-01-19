@@ -1,4 +1,4 @@
-import java.io.*; //<>// //<>//
+import java.io.*; //<>// //<>// //<>//
 //Music Player //not done //aspect ratio and get buttons working
 //
 import ddf.minim.*;
@@ -26,7 +26,7 @@ color hoverovercolour=resetColour, hoverOverColour = resetColour;
 //
 void setup() {
   background(niceblue);
-  size(1000, 800);
+  size(1200, 900);
   //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
@@ -106,31 +106,43 @@ void draw() {
   textFont  ( generalFont, size);
   text  ( playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/5 );
   fill  ( resetColour );
-  //Auto-Play Removed
+  //
+  //
   //
   //HoverOvers
-  noStroke();
- if ( mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) { //play and pause
-    hoverOverColour = grey;
+   if ( mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) { //play and pause
+    hoverOverColour = red ;
     fill( hoverOverColour );
-    rect( width*1/2, height*9/10, width*1/10, height*1/10 );
+   rect(width*1/2, height*9/10, width*1/10, height*1/10);
     fill( resetColour );
+    //
+  } else if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) { //mute
+    hoverOverColour = red ;
+    fill( hoverOverColour );
+   rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 );
+   //
+  } else if ( mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) { //close
+    hoverOverColour = red;
+    fill( hoverOverColour );
+   rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);
   } else { //No Buttons
     hoverOverColour = resetColour;
     fill( hoverOverColour );
     rect( width*1/2, height*9/10, width*1/10, height*1/10 );
-    //rect(  );
-    //rect(  );
+    rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 );
+    rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);
   }
-  stroke(1);
+  //
+  //
+  //
   //
   //Image Positions
   // mute and umute
   noStroke();
-  fill(BB);
+  fill(hoverovercolour);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
   stroke(1);
-  fill(resetColour);
+  fill(hoverovercolour);
   if (muteBoolean == true) {
     image (mute, width*3.5/5, height*9/10, width*1/10, height*1/10);
   } else {
@@ -138,7 +150,7 @@ void draw() {
   }
   //Play and Pause
   noStroke();
-  fill(BB);
+ fill(hoverovercolour);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(hoverovercolour);
