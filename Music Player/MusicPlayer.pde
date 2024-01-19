@@ -20,7 +20,7 @@ color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteButtonBoolean = false;
 //image
-PImage play, pause, mute, unmute, forward, backward, next, previous, close;
+PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover;
 //
 void setup() {
   size(900, 700);
@@ -83,6 +83,9 @@ void setup() {
   next = loadImage(imagePathway + "next.png");
   previous = loadImage(imagePathway + "previous.png");
   close = loadImage(imagePathway + "close.png");
+  EvoCover = loadImage(imagePathway + "");
+  RoaCover = loadImage(imagePathway + "");
+  BoeCover = loadImage(imagePathway + "");
   //
 } // end setup
 //
