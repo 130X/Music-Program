@@ -16,7 +16,7 @@ int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc, niceblue = #79B3F0, red = #E52020 ;
+color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc, niceblue = #79B3F0, red = #E52020, BB = #449DFA;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteBoolean = false;
 //image
@@ -89,7 +89,7 @@ void setup() {
   RoaCover = loadImage(imagePathway + "Roa.png");
   BoeCover = loadImage(imagePathway + "Boe.png");
   //
-  //Aspect ratio
+  //Aspect ratio not added
   //EvoWidth = 983.0;
   //EvoHeight = 1500.0;
 } // end setup
@@ -108,24 +108,26 @@ void draw() {
   fill  ( resetColour );
   //Auto-Play Removed
   //
-  // HoverOver
+  //HoverOvers
   noStroke();
-  if (mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) {
+ if ( mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) { //play and pause
     hoverOverColour = grey;
-    fill(hoverOverColour);
-    
-    rect(width*1/2, height*9/10, width*1/10, height*1/10);
-    fill(niceblue);
-  } else {
-    fill(niceblue);
-    rect(width*1/2, height*9/10, width*1/10, height*1/10);
+    fill( hoverOverColour );
+    rect( width*1/2, height*9/10, width*1/10, height*1/10 );
+    fill( resetColour );
+  } else { //No Buttons
+    hoverOverColour = resetColour;
+    fill( hoverOverColour );
+    rect( width*1/2, height*9/10, width*1/10, height*1/10 );
+    //rect(  );
+    //rect(  );
   }
   stroke(1);
   //
   //Image Positions
   // mute and umute
   noStroke();
-  fill(niceblue);
+  fill(BB);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(resetColour);
@@ -136,7 +138,7 @@ void draw() {
   }
   //Play and Pause
   noStroke();
-  fill(niceblue);
+  fill(BB);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(hoverovercolour);
@@ -244,7 +246,7 @@ void keyPressed() {
   }
   //
   if ( key=='M' || key=='m' ) {
-    if ( playList[currentSong].isMuted()) {
+    if ( playList[currentSong].isMuted() ) {
       playList[currentSong].unmute();
       muteBoolean = false;
       println("unmuted");
