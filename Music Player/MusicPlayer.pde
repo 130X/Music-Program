@@ -16,15 +16,16 @@ int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc;
+color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc, niceblue = #79B3F0, red = #E52020 ;
 PFont generalFont;
-Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteButtonBoolean = false;
+Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteBoolean = false;
 //image
 PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover;
-color hoverovercolour=resetColour;
+color hoverovercolour=resetColour, hoverOverColour = resetColour;
 //float EvoWidth, EvoHeight;
 //
 void setup() {
+  background(niceblue);
   size(1000, 800);
   //fullScreen();
   //Display Algorithm
@@ -71,7 +72,6 @@ void setup() {
   currentSong = int ( random(0, numberOfSongs-1) );
   //println("Random Start", currentSong);
   //
-  playList[currentSong].play();
   //
   //Pathways for image
   String imagePathway = "images/";
@@ -92,7 +92,6 @@ void setup() {
   //Aspect ratio
   //EvoWidth = 983.0;
   //EvoHeight = 1500.0;
-  
 } // end setup
 //
 void draw() {
@@ -109,17 +108,40 @@ void draw() {
   fill  ( resetColour );
   //Auto-Play Removed
   //
+  // HoverOver
+  noStroke();
+  if (mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) {
+    hoverOverColour = grey;
+    fill(hoverOverColour);
+    
+    rect(width*1/2, height*9/10, width*1/10, height*1/10);
+    fill(niceblue);
+  } else {
+    fill(niceblue);
+    rect(width*1/2, height*9/10, width*1/10, height*1/10);
+  }
+  stroke(1);
   //
   //Image Positions
+  // mute and umute
+  noStroke();
+  fill(niceblue);
+  rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
+  stroke(1);
+  fill(resetColour);
+  if (muteBoolean == true) {
+    image (mute, width*3.5/5, height*9/10, width*1/10, height*1/10);
+  } else {
+    image(unmute, width*3.5/5, height*9/10, width*1/10, height*1/10);
+  }
   //Play and Pause
   noStroke();
-  fill(grey);
+  fill(niceblue);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(hoverovercolour);
   if (playButtonBoolean == false) {
     image (pause, width*1/2, height*9/10, width*1/10, height*1/10  );
-   
   } else {
     image(play, width*1/2, height*9/10, width*1/10, height*1/10);
   }
@@ -132,73 +154,41 @@ void draw() {
   image(next, width*4.5/5, height*9/10, width*1/10, height*1/10 );
   image(previous, width*0/5, height*9/10, width*1/10, height*1/10);
   //
-  // mute and umute
-  //noStroke();
-  //fill(grey);
-  rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
-  stroke(1);
-  fill(resetColour);
-  if (muteButtonBoolean = false) {
-    image (mute, width*3.5/5, height*9/10, width*1/10, height*1/10);
-  } else {
-    image(unmute, width*3.5/5, height*9/10, width*1/10, height*1/10);
-  }
+
   //
-    //play
-  if (playButtonBoolean == false) {
-    playButtonBoolean = false;
+  //play
+  if (playButtonBoolean == true) {
+    playList[currentSong].pause();
     //playList[currentSong].pause();
   } else {
-    playButtonBoolean = true;
-    //playList[currentSong].play();
+    playList[currentSong].play();
   }
-  //Mute 
-  if (muteButtonBoolean == false) {
-    playList[currentSong].mute();
-  } else {
-    playList[currentSong].unmute();
-  }
-   //Close
+  //Mute
+  //Close
   image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
   //
-  //Images for songs 
+  //Images for songs
   //image( EvoCover, width*1.26/5, height*2/9, width*1/2, height*1/2  );
   //image( RoaCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
   image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
   //
 } // end draw
 void keyPressed() {
-  if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
+  //if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
   //SoundEffects[1].play();
   //
-  //Play
-  if ( key=='P' || key=='p'  ) {
-    //changeState = true;
-    if ( pauseBoolean==false) {
-     // playButtonBoolean = false;
-      //pauseBoolean = true;
-      //println("paused");
+  //Play and pause
+  if ( key==' '  ) {
+    if (playButtonBoolean == true) {
+      playButtonBoolean = false;
+      //playList[currentSong].pause();
+      println("paused");
     } else {
-      //playButtonBoolean = false;
-      //pauseBoolean=false;
-      //println("played");
+      playButtonBoolean = true;
+      println("played");
     }
   }
   //
-  //Pause
-  if ( key=='S'|| key=='s'  ) {
-    //changeState = true;
-    if ( pauseBoolean==false ) {
-      //playButtonBoolean = true;
-     // pauseBoolean = true;
-     // println("paused");
-    } else {
-      //playButtonBoolean = false;
-      //pauseBoolean = false;
-    //  println("play");
-      // playList[currentSong].play();
-    }
-  }
   //Next and Previous
   //For Next You have to press the Right Key and  IF theres a song playing it will
   //pause it then rewind it then it would play next song;
@@ -238,16 +228,6 @@ void keyPressed() {
   //Mute
   //A pretty easy button If the song is muted then it unmutes the sound
   //but if its unmuted and you press M/m then it mutes it
-  if ( key=='M' || key=='m' ) {
-    //changeState = true;
-    if ( muteButtonBoolean == true ) {
-      muteButtonBoolean = false;
-      println("unmuted");
-    } else {
-      muteButtonBoolean = true;
-      println("muted");
-    }
-  }
   //Skip Forward and Backward
   //if you press D or A  it skips 5000 miliseconds back or forward which is the same as 5 seconds
   //Forward
@@ -263,6 +243,17 @@ void keyPressed() {
     println(" -5 Seconds");
   }
   //
+  if ( key=='M' || key=='m' ) {
+    if ( playList[currentSong].isMuted()) {
+      playList[currentSong].unmute();
+      muteBoolean = false;
+      println("unmuted");
+    } else {
+      playList[currentSong].mute();
+      muteBoolean = true;
+      println("muted");
+    }
+  }
   //
   //Loop broken keybinds
   /*
@@ -286,13 +277,16 @@ void mousePressed() {
     }
   }
   //mute
-    if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
-    if (muteButtonBoolean == false)
-      muteButtonBoolean = true;
+  if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) {
+    if ( playList[currentSong].isMuted()) {
+      playList[currentSong].unmute();
+      muteBoolean = false;
+      println("unmuted");
     } else {
-    muteButtonBoolean = false;
-  }
-  {
+      playList[currentSong].mute();
+      muteBoolean = true;
+      println("muted");
+    }
   }
   //Next and Previous
   //Next
@@ -311,7 +305,7 @@ void mousePressed() {
     println(currentSong);
     playList[currentSong].play();
   } //END Next
-  //Previous 
+  //Previous
   if (mouseX>width*0/5 && mouseX<width*0/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
     if ( playList[currentSong].isPlaying() ) {
       playList[currentSong].pause();
@@ -340,7 +334,7 @@ void mousePressed() {
     println("-5");
   }
   //close
- if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) exit();
+  if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) exit();
   //
 }//end mousePressed
 // []'//////
