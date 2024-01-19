@@ -21,6 +21,7 @@ PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteButtonBoolean = false;
 //image
 PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover;
+//float EvoWidth, EvoHeight;
 //
 void setup() {
   size(900, 700);
@@ -83,10 +84,14 @@ void setup() {
   next = loadImage(imagePathway + "next.png");
   previous = loadImage(imagePathway + "previous.png");
   close = loadImage(imagePathway + "close.png");
-  EvoCover = loadImage(imagePathway + "");
-  RoaCover = loadImage(imagePathway + "");
-  BoeCover = loadImage(imagePathway + "");
+  EvoCover = loadImage(imagePathway + "Evo.png");
+  RoaCover = loadImage(imagePathway + "Roa.png");
+  BoeCover = loadImage(imagePathway + "Boe.png");
   //
+  //Aspect ratio
+  //EvoWidth = 983.0;
+  //EvoHeight = 1500.0;
+  
 } // end setup
 //
 void draw() {
@@ -138,7 +143,10 @@ void draw() {
   }
   //
   image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
-  //
+  //Images for songs 
+  //image( EvoCover, width*1.26/5, height*2/9, width*1/2, height*1/2  );
+  //image( RoaCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
+  image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
   //
   if (playButtonBoolean ==true) {
     playList[currentSong].pause();
