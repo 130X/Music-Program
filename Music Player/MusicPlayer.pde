@@ -133,8 +133,8 @@ void draw() {
   image(previous, width*0/5, height*9/10, width*1/10, height*1/10);
   //
   // mute and umute
-  // noStroke();
-  // fill(grey);
+  //noStroke();
+  //fill(grey);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(resetColour);
@@ -144,25 +144,27 @@ void draw() {
     image(unmute, width*3.5/5, height*9/10, width*1/10, height*1/10);
   }
   //
-  image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
-  //Images for songs 
-  //image( EvoCover, width*1.26/5, height*2/9, width*1/2, height*1/2  );
-  //image( RoaCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
-  image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
-  //
-  if (playButtonBoolean ==true) {
-    playList[currentSong].pause();
+    //play
+  if (playButtonBoolean == false) {
+    playButtonBoolean = false;
+    //playList[currentSong].pause();
   } else {
-    playList[currentSong].play();
+    playButtonBoolean = true;
+    //playList[currentSong].play();
   }
-  //
+  //Mute 
   if (muteButtonBoolean == false) {
     playList[currentSong].mute();
   } else {
     playList[currentSong].unmute();
   }
-
-
+   //Close
+  image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
+  //
+  //Images for songs 
+  //image( EvoCover, width*1.26/5, height*2/9, width*1/2, height*1/2  );
+  //image( RoaCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
+  image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
   //
 } // end draw
 void keyPressed() {
@@ -173,13 +175,13 @@ void keyPressed() {
   if ( key=='P' || key=='p'  ) {
     //changeState = true;
     if ( pauseBoolean==false) {
-      //pauseBoolean=true;
+     // playButtonBoolean = false;
+      //pauseBoolean = true;
       //println("paused");
     } else {
-      playButtonBoolean = false;
-      pauseBoolean=false;
-
-      println("played");
+      //playButtonBoolean = false;
+      //pauseBoolean=false;
+      //println("played");
     }
   }
   //
@@ -187,14 +189,13 @@ void keyPressed() {
   if ( key=='S'|| key=='s'  ) {
     //changeState = true;
     if ( pauseBoolean==false ) {
-      pauseBoolean = true;
-      playButtonBoolean = true;
-
-      println("paused");
+      //playButtonBoolean = true;
+     // pauseBoolean = true;
+     // println("paused");
     } else {
+      //playButtonBoolean = false;
       //pauseBoolean = false;
-      //println("play");
-      // Optionally, you can resume playing here if needed:
+    //  println("play");
       // playList[currentSong].play();
     }
   }
