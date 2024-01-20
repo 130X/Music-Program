@@ -16,7 +16,7 @@ int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc, niceblue = #79B3F0, red = #E52020, BB = #3d799d;
+color tropical = #30D15C, resetColour = #3d799d, grey = #cccccc, niceblue = #79B3F0, red = #E52020, BB = #33B2F0;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteBoolean = false;
 //image
@@ -127,6 +127,16 @@ void draw() {
     fill( hoverOverColour );
    rect( width*0/5, height*9/10, width*1/10, height*1/10);
    //
+    } else if (mouseX>width*3/5 && mouseX<width*3/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { //Forward
+    hoverOverColour = BB;
+    fill( hoverOverColour );
+   rect( width*3/5, height*9/10, width*1/10, height*1/10 );
+   //
+    } else if (mouseX>width*2/5 && mouseX<width*2/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { //Backwards
+    hoverOverColour = BB;
+    fill( hoverOverColour );
+   rect( width*2/5, height*9/10, width*1/10, height*1/10);
+   //
   } else if ( mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) { //close
     hoverOverColour = red; //close
     fill( hoverOverColour );
@@ -138,6 +148,8 @@ void draw() {
     rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 ); //mute
     rect( width*4.5/5, height*9/10, width*1/10, height*1/10 ); //next
     rect(  width*0/5, height*9/10, width*1/10, height*1/10  ); //previous
+    rect(  width*3/5, height*9/10, width*1/10, height*1/10  ); //foward
+    rect(  width*2/5, height*9/10, width*1/10, height*1/10 ); //backward
     rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);//close
     
   }
@@ -311,6 +323,8 @@ void mousePressed() {
       println("muted");
     }
   }
+  //
+  hoverovercolour = resetColour;
   //Next and Previous
   //Next
   if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
