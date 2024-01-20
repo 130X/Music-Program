@@ -12,11 +12,11 @@ import ddf.minim.ugens.*;
 Minim minim;
 File musicFolder, SoundEffectsFolder;
 int numberOfSongs = 2, numberOfSoundEffects = 2;
-int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );// Variable is rewritten in setup()
+int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
 AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
-color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc, niceblue = #79B3F0, red = #E52020, BB = #449DFA;
+color tropical = #30D15C, resetColour = #FFFFFF, grey = #cccccc, niceblue = #79B3F0, red = #E52020, BB = #3d799d;
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteBoolean = false;
 //image
@@ -25,12 +25,12 @@ color hoverovercolour=resetColour, hoverOverColour = resetColour;
 //float EvoWidth, EvoHeight;
 //
 void setup() {
-  background(niceblue);
+  background( niceblue );
   size(1200, 900);
   //fullScreen();
   //Display Algorithm
   minim = new Minim(this);
-  //Music file load
+//Music file load
   String relativeMusicPathway = "Audio Library/Songs/";
   String absoluteMusicPath = sketchPath( relativeMusicPathway );
   musicFolder = new File(absoluteMusicPath);
@@ -49,9 +49,9 @@ void setup() {
     playList[i]= minim.loadFile( songFilePathway[i] );
     playListMetaData[i] = playList[i].getMetaData();
   } //End Music Load
-  //Sound Effects load
-  String relativeSoundPathway = "Audio Library/SoundEffects/";//Relative pathay
-  String absoluteSoundPath = sketchPath( relativeSoundPathway); //
+//Sound Effects load
+  String relativeSoundPathway = "Audio Library/SoundEffects/"; 
+  String absoluteSoundPath = sketchPath( relativeSoundPathway); 
   SoundEffectsFolder = new File(absoluteSoundPath);
   int SoundEffectsFileCount = SoundEffectsFolder.list().length;
   File[] SoundEffectsFiles = SoundEffectsFolder.listFiles();
@@ -68,10 +68,8 @@ void setup() {
   //
   generalFont = createFont ("Algerian", 30);
   //
-  //currentSong =  numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
-  currentSong = int ( random(0, numberOfSongs-1) );
-  //println("Random Start", currentSong);
   //
+  currentSong = int ( random(0, numberOfSongs-1) );
   //
   //Pathways for image
   String imagePathway = "images/";
@@ -89,9 +87,7 @@ void setup() {
   RoaCover = loadImage(imagePathway + "Roa.png");
   BoeCover = loadImage(imagePathway + "Boe.png");
   //
-  //Aspect ratio not added
-  //EvoWidth = 983.0;
-  //EvoHeight = 1500.0;
+  //Not Aspect ratio
 } // end setup
 //
 void draw() {
@@ -110,27 +106,40 @@ void draw() {
   //
   //
   //HoverOvers
-   if ( mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) { //play and pause
-    hoverOverColour = red ;
+   if (mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) { //Play and pause
+    hoverOverColour = BB;
     fill( hoverOverColour );
-   rect(width*1/2, height*9/10, width*1/10, height*1/10);
+    rect( width*1/2, height*9/10, width*1/10, height*1/10 );  
     fill( resetColour );
     //
-  } else if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) { //mute
-    hoverOverColour = red ;
+  } else if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { // mute and umute
+    hoverOverColour = BB;
     fill( hoverOverColour );
-   rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 );
+   rect(width*3.5/5, height*9/10, width*1/10, height*1/10 );
+   //
+  } else if ( mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { //Next
+    hoverOverColour = BB;
+    fill( hoverOverColour );
+   rect( width*4.5/5, height*9/10, width*1/10, height*1/10);
+   //
+  } else if ( mouseX>width*0/5 && mouseX<width*0/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) { //Previous
+    hoverOverColour = BB;
+    fill( hoverOverColour );
+   rect( width*0/5, height*9/10, width*1/10, height*1/10);
    //
   } else if ( mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) { //close
-    hoverOverColour = red;
+    hoverOverColour = red; //close
     fill( hoverOverColour );
    rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);
-  } else { //No Buttons
+  } else { 
     hoverOverColour = resetColour;
     fill( hoverOverColour );
-    rect( width*1/2, height*9/10, width*1/10, height*1/10 );
-    rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 );
-    rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);
+    rect( width*1/2, height*9/10, width*1/10, height*1/10 ); //play
+    rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 ); //mute
+    rect( width*4.5/5, height*9/10, width*1/10, height*1/10 ); //next
+    rect(  width*0/5, height*9/10, width*1/10, height*1/10  ); //previous
+    rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);//close
+    
   }
   //
   //
