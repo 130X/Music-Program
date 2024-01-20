@@ -11,7 +11,7 @@ import ddf.minim.ugens.*;
 //Global variables
 Minim minim;
 File musicFolder, SoundEffectsFolder;
-int numberOfSongs = 2, numberOfSoundEffects = 2;
+int numberOfSongs = 2, numberOfSoundEffects = 3;
 int currentSong = numberOfSongs - numberOfSongs + int ( random(numberOfSongs) );
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
@@ -20,7 +20,7 @@ color tropical = #30D15C, resetColour = #3d799d, grey = #cccccc, niceblue = #79B
 PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteBoolean = false;
 //image
-PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover;
+PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover, amongus;
 color hoverovercolour=resetColour, hoverOverColour = BB;
 //float EvoWidth, EvoHeight;
 //
@@ -86,6 +86,7 @@ void setup() {
   EvoCover = loadImage(imagePathway + "Evo.png");
   RoaCover = loadImage(imagePathway + "Roa.png");
   BoeCover = loadImage(imagePathway + "Boe.png");
+  amongus = loadImage(imagePathway + "amongus.jpg");
   //
   //Not Aspect ratio
 } // end setup
@@ -107,25 +108,26 @@ void draw() {
   //
   //HoverOvers
    if (mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) { //Play and pause
+    image(play, width*1/2, height*9/10, width*1/10, height*1/10);
     hoverOverColour = BB;
     fill( hoverOverColour );
-    rect( width*1/2, height*9/10, width*1/10, height*1/10 );  
-    //fill( resetColour );
+    rect(  width*1/2, height*9/10, width*1/10, height*1/10 );  
+    fill( resetColour );
     //
   } else if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { // mute and umute
     hoverOverColour = BB;
-    fill( hoverOverColour );
+    //fill( hoverOverColour );
    rect(width*3.5/5, height*9/10, width*1/10, height*1/10 );
    //
-  } else if ( mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { //Next
+  } else if ( mouseX>width*3.8/5 && mouseX<width*3.8/5+width*1/10 && mouseY>height*0.9/2 && mouseY<height*0.9/2+height*1/10 ) { //Next
     hoverOverColour = BB;
     fill( hoverOverColour );
-   rect( width*4.5/5, height*9/10, width*1/10, height*1/10);
+   rect( width*3.8/5, height*0.9/2, width*1/10, height*1/10 );
    //
-  } else if ( mouseX>width*0/5 && mouseX<width*0/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) { //Previous
+  } else if ( mouseX>width*0.7/5 && mouseX<width*0.7/5+width*1/10 && mouseY>height*0.9/2 && mouseY<height*0.9/2+height*1/10) { //Previous
     hoverOverColour = BB;
     fill( hoverOverColour );
-   rect( width*0/5, height*9/10, width*1/10, height*1/10);
+   rect( width*0.7/5, height*0.9/2, width*1/10, height*1/10);
    //
     } else if (mouseX>width*3/5 && mouseX<width*3/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { //Forward
     hoverOverColour = BB;
@@ -146,8 +148,8 @@ void draw() {
     fill( hoverOverColour );
     rect( width*1/2, height*9/10, width*1/10, height*1/10 ); //play
     rect(  width*3.5/5, height*9/10, width*1/10, height*1/10 ); //mute
-    rect( width*4.5/5, height*9/10, width*1/10, height*1/10 ); //next
-    rect(  width*0/5, height*9/10, width*1/10, height*1/10  ); //previous
+    rect( width*3.8/5, height*0.9/2, width*1/10, height*1/10  ); //next
+    rect( width*0.7/5, height*0.9/2, width*1/10, height*1/10 ); //previous 
     rect(  width*3/5, height*9/10, width*1/10, height*1/10  ); //foward
     rect(  width*2/5, height*9/10, width*1/10, height*1/10 ); //backward
     rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);//close
@@ -159,34 +161,34 @@ void draw() {
   //
   //Image Positions
   // mute and umute
-  fill(resetColour);
+  fill(hoverOverColour);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
-  fill(hoverovercolour);
+  fill(resetColour);
   if (muteBoolean == true) {
     image (mute, width*3.5/5, height*9/10, width*1/10, height*1/10);
   } else {
     image(unmute, width*3.5/5, height*9/10, width*1/10, height*1/10);
   } 
-  
+   //
   //Play and Pause
-  fill(resetColour);
+  fill(hoverOverColour);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
-  fill(hoverovercolour);
+  fill(resetColour);
   if (playButtonBoolean == false) {
     image (pause, width*1/2, height*9/10, width*1/10, height*1/10  );
   } else {
     image(play, width*1/2, height*9/10, width*1/10, height*1/10);
   }
   //
+  //
   // Skip forward and backward
   image(forward, width*3/5, height*9/10, width*1/10, height*1/10 );
   image(backward, width*2/5, height*9/10, width*1/10, height*1/10);
   //
   // Next and previous song
-  image(next, width*4.5/5, height*9/10, width*1/10, height*1/10 );
-  image(previous, width*0/5, height*9/10, width*1/10, height*1/10);
+  image(next, width*3.8/5, height*0.9/2, width*1/10, height*1/10 );   //next, width*3.8/5, height*0.9/2, width*1/10, height*1/10  );
+  image(previous, width*0.7/5, height*0.9/2, width*1/10, height*1/10);   //previous, width*0/5, height*9/10, width*1/10, height*1/10);
   //
-
   //
   //play
   if (playButtonBoolean == true) {
@@ -196,6 +198,8 @@ void draw() {
     playList[currentSong].play();
   }
   //Mute
+  //amongus
+  image(amongus, width*0.1/5, height*0.2/10, width*1/10, height*1/10);
   //Close
   image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
   //
@@ -206,18 +210,18 @@ void draw() {
   //
 } // end draw
 void keyPressed() {
-  //if ( SoundEffects[1].position() !=1 ) SoundEffects[0].rewind();
-  //SoundEffects[1].play();
+  if (  key=='Q' || key =='q' ) {
+  if ( SoundEffects[0].position() !=1 ) SoundEffects[0].rewind();
+  SoundEffects[0].play();
+  }
   //
   //Play and pause
   if ( key==' '  ) {
     if (playButtonBoolean == true) {
       playButtonBoolean = false;
       //playList[currentSong].pause();
-      println("paused");
     } else {
       playButtonBoolean = true;
-      println("played");
     }
   }
   //
@@ -323,7 +327,7 @@ void mousePressed() {
   //
   //Next and Previous
   //Next
-  if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
+  if (mouseX>width*3.8/5 && mouseX<width*3.8/5+width*1/10 && mouseY>height*0.9/2 && mouseY<height*0.9/2+height*1/10) {
     if ( playList[currentSong].isPlaying() ) {
       playList[currentSong].pause();
       playList[currentSong].rewind();
@@ -339,7 +343,7 @@ void mousePressed() {
     playList[currentSong].play();
   } //END Next
   //Previous
-  if (mouseX>width*0/5 && mouseX<width*0/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
+  if (mouseX>width*0.7/5 && mouseX<width*0.7/5+width*1/10 && mouseY>height*0.9/2 && mouseY<height*0.9/2+height*1/10) {
     if ( playList[currentSong].isPlaying() ) {
       playList[currentSong].pause();
       playList[currentSong].rewind();
@@ -365,6 +369,11 @@ void mousePressed() {
   if (mouseX>width*2/5 && mouseX<width*2/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
     playList[currentSong].skip(-5000);
     println("-5");
+  }
+  //soundeffect
+  if (mouseX>width*0.1/5 && mouseX<width*0.1/5+width*1/10 && mouseY>height*0.2/10 && mouseY<height*0.2/10+height*1/10) {
+    if ( SoundEffects[0].position() !=1 ) SoundEffects[0].rewind();
+  SoundEffects[0].play();
   }
   //close
   if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) exit();
