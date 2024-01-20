@@ -21,7 +21,7 @@ PFont generalFont;
 Boolean stopBoolean = false, pauseBoolean=false, changeState=false, playButtonBoolean = false, muteBoolean = false;
 //image
 PImage play, pause, mute, unmute, forward, backward, next, previous, close, EvoCover, RoaCover, BoeCover;
-color hoverovercolour=resetColour, hoverOverColour = resetColour;
+color hoverovercolour=resetColour, hoverOverColour = BB;
 //float EvoWidth, EvoHeight;
 //
 void setup() {
@@ -160,7 +160,7 @@ void draw() {
   //Image Positions
   // mute and umute
   noStroke();
-  fill(hoverovercolour);
+  fill(red);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(hoverovercolour);
@@ -171,7 +171,7 @@ void draw() {
   }
   //Play and Pause
   noStroke();
- fill(hoverovercolour);
+ fill(red);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
   stroke(1);
   fill(hoverovercolour);
@@ -324,7 +324,6 @@ void mousePressed() {
     }
   }
   //
-  hoverovercolour = resetColour;
   //Next and Previous
   //Next
   if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10) {
@@ -374,5 +373,6 @@ void mousePressed() {
   if (mouseX>width*4.5/5 && mouseX<width*4.5/5+width*1/10 && mouseY>height*0.1/10 && mouseY<height*0.1/10+height*1/10) exit();
   //
 }//end mousePressed
-// []'//////
+//
+//
 // End Main Program
