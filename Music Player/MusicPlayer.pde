@@ -110,7 +110,7 @@ void draw() {
     hoverOverColour = BB;
     fill( hoverOverColour );
     rect( width*1/2, height*9/10, width*1/10, height*1/10 );  
-    fill( resetColour );
+    //fill( resetColour );
     //
   } else if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { // mute and umute
     hoverOverColour = BB;
@@ -159,21 +159,18 @@ void draw() {
   //
   //Image Positions
   // mute and umute
-  noStroke();
-  fill(red);
+  fill(resetColour);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
-  stroke(1);
   fill(hoverovercolour);
   if (muteBoolean == true) {
     image (mute, width*3.5/5, height*9/10, width*1/10, height*1/10);
   } else {
     image(unmute, width*3.5/5, height*9/10, width*1/10, height*1/10);
-  }
+  } 
+  
   //Play and Pause
-  noStroke();
- fill(red);
+  fill(resetColour);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
-  stroke(1);
   fill(hoverovercolour);
   if (playButtonBoolean == false) {
     image (pause, width*1/2, height*9/10, width*1/10, height*1/10  );
