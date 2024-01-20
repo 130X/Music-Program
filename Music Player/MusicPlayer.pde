@@ -186,8 +186,8 @@ void draw() {
   image(backward, width*2/5, height*9/10, width*1/10, height*1/10);
   //
   // Next and previous song
-  image(next, width*3.8/5, height*0.9/2, width*1/10, height*1/10 );   //next, width*3.8/5, height*0.9/2, width*1/10, height*1/10  );
-  image(previous, width*0.7/5, height*0.9/2, width*1/10, height*1/10);   //previous, width*0/5, height*9/10, width*1/10, height*1/10);
+  image(next, width*3.8/5, height*0.9/2, width*1/10, height*1/10 );  
+  image(previous, width*0.7/5, height*0.9/2, width*1/10, height*1/10);  
   //
   //
   //play
