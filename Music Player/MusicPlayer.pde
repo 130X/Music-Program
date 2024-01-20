@@ -161,7 +161,7 @@ void draw() {
   //
   //Image Positions
   // mute and umute
-  fill(hoverOverColour);
+  fill(resetColour);
   rect( width*3.5/5, height*9/10, width*1/10, height*1/10);
   fill(resetColour);
   if (muteBoolean == true) {
@@ -171,7 +171,7 @@ void draw() {
   } 
    //
   //Play and Pause
-  fill(hoverOverColour);
+  fill(resetColour);
   rect( width*1/2, height*9/10, width*1/10, height*1/10);
   fill(resetColour);
   if (playButtonBoolean == false) {
@@ -204,9 +204,16 @@ void draw() {
   image(close, width*4.5/5, height*0.1/10, width*1/10, height*1/10);
   //
   //Images for songs
+    if (currentSong == 0) {
+      image( RoaCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
+    } else if (currentSong == 1) {  
+      image( EvoCover, width*1.26/5, height*2/9, width*1/2, height*1/2  );
+    } else {  
+      image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
+    }
   //image( EvoCover, width*1.26/5, height*2/9, width*1/2, height*1/2  );
   //image( RoaCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
-  image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
+  //image( BoeCover, width*1.26/5, height*2/9, width*1/2, height*1/2   );
   //
 } // end draw
 void keyPressed() {
