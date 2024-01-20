@@ -116,7 +116,6 @@ void draw() {
     //
   } else if ( mouseX>width*3.5/5 && mouseX<width*3.5/5+width*1/10 && mouseY>height*9/10 && mouseY<height*9/10+height*1/10 ) { // mute and umute
     hoverOverColour = BB;
-    //fill( hoverOverColour );
    rect(width*3.5/5, height*9/10, width*1/10, height*1/10 );
    //
   } else if ( mouseX>width*3.8/5 && mouseX<width*3.8/5+width*1/10 && mouseY>height*0.9/2 && mouseY<height*0.9/2+height*1/10 ) { //Next
@@ -153,10 +152,8 @@ void draw() {
     rect(  width*3/5, height*9/10, width*1/10, height*1/10  ); //foward
     rect(  width*2/5, height*9/10, width*1/10, height*1/10 ); //backward
     rect(width*4.5/5, height*0.1/10, width*1/10, height*1/10);//close
-    
   }
-  //
-  //
+
   //
   //
   //Image Positions
@@ -315,8 +312,10 @@ void mousePressed() {
   if ( mouseX>width*1/2 && mouseX<width*1/2+width*1/10 && mouseY>height*9/10 &&mouseY<height*9/10+height*1/10) {
     if (playButtonBoolean == false) {
       playButtonBoolean = true;
+      hoverOverColour = BB;
     } else {
       playButtonBoolean=false;
+      hoverOverColour = resetColour;
     }
   }
   //mute
